@@ -205,10 +205,6 @@ function menu(rel){
 	$('[rel='+rel+']').addClass('active');
 }
 
-function empty(object){
-	$(this).val('');
-}
-
 window.onload = function(){
 	$("body").iealert({
 		support: "ie8",
