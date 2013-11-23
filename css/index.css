@@ -206,7 +206,7 @@ html,body
 	background: #000;
 	background-image:url(../images/bg.png); 
 	background-repeat: repeat;
-	transition: right 0.5s;	
+	transition: right 0.8s;	
 	z-index: 999;
 }
 .userCenter.show
@@ -225,7 +225,7 @@ html,body
 	background-image:url(../images/bg.png); 
 	background-repeat: repeat; 
 	box-shadow: -5px 0px 15px rgba(0,0,0,0.6);
-	transition: right 0.5s;
+	transition: right 0.8s;
 	z-index: 998;
 }
 .widget.show
