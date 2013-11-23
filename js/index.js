@@ -6,7 +6,7 @@
 	var footerHeight = $('.footer').height();
 	$('.nav-bar').css("line-height", navHeight+'px');
 	$('.nav-bar').css("font-size", navHeight*0.3+'px');
-	$('.nav-bar').css("text-indent", navWidth*0.08+'px');
+	$('.nav-bar').css("text-indent", navWidth*0.1+'px');
 	$('.menu').css("font-size", menuHeight*0.5+'px');
 	$('.menu').css("text-indent", menuWidth*0.18+'px');
 	$('.menu').css("line-height", menuHeight+'px');
