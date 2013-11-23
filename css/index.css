@@ -132,7 +132,7 @@ html,body
 	background: #EEEEEE;
 	padding: 15px;
 	box-shadow: -3px -3px 8px rgba(0, 0, 0, 0.72), 0 0 0 rgba(0, 0, 0, 0.06) inset;
-	z-index: 999;
+	z-index: 998;
 }
 .half
 {
@@ -196,6 +196,48 @@ html,body
 	padding: 5px;
 	margin: 10px 18px;
 }
+.userCenter
+{
+	width: 30%;
+	height: 100%;
+	overflow: auto;
+	position: fixed;
+	right: -30%;
+	background: #000;
+	background-image:url(../images/bg.png); 
+	background-repeat: repeat;
+	transition: right 0.5s;	
+	z-index: 999;
+}
+.userCenter.show
+{
+	right: 0;
+}
+.widget
+{
+	display: table;
+	text-align:center;
+	width: 4%;
+	padding-right: 1%;
+	height: 100%;
+	overflow: auto;
+	position: fixed;
+	right: -1%;
+	background-image:url(../images/bg.png); 
+	background-repeat: repeat; 
+	box-shadow: -5px 0px 15px rgba(0,0,0,0.6);
+	transition: right 0.5s;
+	z-index: 999;
+}
+.widget.show
+{
+	right: 30%;
+}
+.widget span
+{
+    display:table-cell;
+    vertical-align:middle;
+} 
 table
 {
 	border-collapse: collapse;

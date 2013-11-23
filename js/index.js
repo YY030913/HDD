@@ -205,6 +205,18 @@ function menu(rel){
 	$('[rel='+rel+']').addClass('active');
 }
 
+function center(){
+	if($('#widget').attr('class') == 'widget'){
+		$('#widget').addClass('show');
+		$('#userCenter').addClass('show');
+		$('#widget').find('img').attr('src','./images/arrow-back.png');
+	}else{
+		$('#widget').removeClass('show');
+		$('#userCenter').removeClass('show');
+		$('#widget').find('img').attr('src','./images/arrow.png');
+	}
+}
+
 window.onload = function(){
 	$("body").iealert({
 		support: "ie8",
@@ -218,6 +230,23 @@ window.onload = function(){
 	});
 	$(".footer").mouseleave(function(){
 		$(".footer").removeClass('over');
+	});
+	$("#widget").click(function(){
+		center();
+	});
+	$("#widget").mouseover(function(){
+		if($('#widget').attr('class') == 'widget'){
+			$(this).find('img').attr('src','./images/arrow-red.png');
+		}else{
+			$(this).find('img').attr('src','./images/arrow-back-red.png');
+		}
+	});
+	$("#widget").mouseleave(function(){
+		if($('#widget').attr('class') == 'widget'){
+			$(this).find('img').attr('src','./images/arrow.png');
+		}else{
+			$(this).find('img').attr('src','./images/arrow-back.png');
+		}
 	});
 	$(window).resize(function() {
 		callBack();
