@@ -12,6 +12,7 @@
 	$('.menu').css("line-height", menuHeight+'px');
 	$('.footer').css("line-height", footerHeight+'px');
 	$('.footer').css("font-size", footerHeight*0.45+'px');
+	$('.version').css("font-size", navHeight*0.15+'px');
 }
 
 function dutyUpdate(){

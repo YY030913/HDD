@@ -28,7 +28,8 @@ $row=mysql_fetch_array($result);
 
 <body>
 	<div class="nav-bar">
-		<p>湖北工业大学计算机学院学工办</p>
+		<p>计算机学院学工办自助平台</p>
+		<div class="version"><p>Ver 1.0 Beta</p></div>
 	</div>
 	<div class="widget" id="widget"><span><img src="./images/arrow.png" width="30%"></img></span></div>
 	<div class="userCenter" id="userCenter">

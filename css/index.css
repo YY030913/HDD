@@ -16,6 +16,20 @@ html,body
 	background: #2e8bcc;
 	color: #FFF;
 }
+.version
+{
+	float: left;
+	width: 10%;
+	position: fixed;
+	margin: 0;
+	padding: 0;
+	line-height: 100%;
+	text-indent: 0;
+	height: 6%;
+	top: 14%;
+	right: 4%;
+	color: #FFF;
+}
 .menu
 {
 	float: left;
