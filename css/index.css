@@ -21,7 +21,7 @@ html,body
 	float: left;
 	position: fixed;
 	bottom: 0;
-	left: 10%;
+	left: 6%;
 	width: 20%;
 	height: 75%;
 	background-color: #F0F0F0;
@@ -64,7 +64,7 @@ html,body
 	float: left;
 	width: 55%;
 	position: fixed;
-	right: 10%;
+	right: 14%;
 	top: 25%;
 	height: 70%;
 	overflow:auto;
@@ -90,7 +90,7 @@ html,body
 	float: left;
 	width: 55%;
 	position: fixed;
-	right: 10%;
+	right: 14%;
 	bottom: 0;
 	height: 5%;
 	overflow: hidden;
@@ -132,7 +132,7 @@ html,body
 	background: #EEEEEE;
 	padding: 15px;
 	box-shadow: -3px -3px 8px rgba(0, 0, 0, 0.72), 0 0 0 rgba(0, 0, 0, 0.06) inset;
-	z-index: 998;
+	z-index: 997;
 }
 .half
 {
@@ -216,27 +216,30 @@ html,body
 .widget
 {
 	display: table;
-	text-align:center;
-	width: 4%;
-	padding-right: 1%;
+	text-align: left;
+	width: 8%;
 	height: 100%;
 	overflow: auto;
 	position: fixed;
-	right: -1%;
+	right: -5%;
 	background-image:url(../images/bg.png); 
 	background-repeat: repeat; 
 	box-shadow: -5px 0px 15px rgba(0,0,0,0.6);
 	transition: right 0.5s;
-	z-index: 999;
+	z-index: 998;
 }
 .widget.show
 {
-	right: 30%;
+	right: 25%;
+}
+.widget img
+{
+	margin-left: 5px;
 }
 .widget span
 {
-    display:table-cell;
-    vertical-align:middle;
+    display: table-cell;
+    vertical-align: middle;
 } 
 table
 {

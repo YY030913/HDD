@@ -30,7 +30,7 @@ $row=mysql_fetch_array($result);
 	<div class="nav-bar">
 		<p>湖北工业大学计算机学院学工办</p>
 	</div>
-	<div class="widget" id="widget"><span><img src="./images/arrow.png" width="60%"></img></span></div>
+	<div class="widget" id="widget"><span><img src="./images/arrow.png" width="30%"></img></span></div>
 	<div class="userCenter" id="userCenter">
 
 	</div>
