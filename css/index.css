@@ -30,6 +30,16 @@ html,body
 	right: 4%;
 	color: #FFF;
 }
+.version a
+{
+	color: #FFF;
+	text-decoration: none;
+}
+.version a:hover,
+.version a:focus
+{
+	text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.8);
+}
 .menu
 {
 	float: left;
