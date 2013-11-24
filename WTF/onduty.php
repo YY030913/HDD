@@ -54,13 +54,11 @@ if(!$num)
 <?php
 	while($row=mysql_fetch_array($result))
 	{
-		$time=strtotime($row['time'])+13*60*60;
-		$time=date('Y-m-d H:i:s',$time);
 ?>
 	<tr height="30">
 		<td><?php echo $row['name']; ?></td>
 		<td><?php echo $row['mobile']; ?></td>
-		<td><?php echo $time; ?></td>
+		<td><?php echo $row['time']; ?></td>
 	</tr>
 <?php
 	}

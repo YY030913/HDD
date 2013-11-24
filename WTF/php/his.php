@@ -18,7 +18,7 @@ $sql="SELECT * FROM hdd_teachers_status WHERE tid='$id' AND time >= '$start' AND
 $result=@mysql_query($sql) or die(mysql_error());
 while($row=mysql_fetch_array($result))
 {
-	$time=strtotime($row['time'])+13*60*60;
+	$time=$row['time'];
 	$time=date('Y-m-d H:i:s',$time);
 	$content[]=array(
 		'status' => urlencode($row['status']),
