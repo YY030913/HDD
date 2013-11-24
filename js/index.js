@@ -14,7 +14,6 @@
 }
 
 function dutyUpdate(){
-	menu('onduty');
 	var load=layer.load(0);
 	$.ajax({
 		url: './php/api.php',
@@ -32,7 +31,6 @@ function dutyUpdate(){
 }
 
 function teaUpdate(){
-	menu('teacher');
 	var load=layer.load(0);
 	$.ajax({
 		url: './php/api.php',
@@ -56,7 +54,6 @@ function classUpdate(){
 	if(weekShader == 0){
 		weekShader = 7;
 	}
-	menu('order');
 	var load=layer.load(0);
 	var table='<p rel="info" style="text-align:center;">P.S. 把鼠标放在红色标记上查看详细信息，预定不可取消</p><p style="text-align:center;"><img src="./images/1.png" width="5%"></img><span>书屋已预订</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="./images/2.png" width="5%"></img><span>会议室已预订</span></p><table><tr height="40"><td width="80" align="center">&nbsp;</td><td width="80" align="center">星期一</td><td width="80" align="center">星期二</td><td width="80" align="center">星期三</td><td width="80" align="center">星期四</td><td width="80" align="center">星期五</td><td width="80" align="center">星期六</td><td width="80" align="center">星期日</td></tr>';
 	var time=new Array('','1-2节','3-4节','午休','5-6节','7-8节','9-10节','IN');
@@ -195,13 +192,7 @@ function submit(id){
 }
 
 function extend(){
-	menu('extend');
 	$('.content').html('<h2><a href="http://blog.sina.com.cn/u/2450629767">学工助理博客</a></h2><h2><a href="http://www.benbentime.com">计算机学院工作网</a></h2><h2><a href="http://blog.sina.com.cn/hbut2013">13级年级博客</a></h2><h2><a href="http://blog.sina.com.cn/u/2449956125">12级年级博客</a></h2><h2><a href="http://blog.sina.com.cn/u/2449939115">11级年级博客</a></h2><h2><a href="http://blog.sina.com.cn/u/2450656273">10级年级博客</a></h2>');
-}
-
-function menu(rel){
-	$('.list').removeClass('active');
-	$('[rel='+rel+']').addClass('active');
 }
 
 function center(){
@@ -246,6 +237,10 @@ window.onload = function(){
 	});
 	$("#widget").click(function(){
 		center();
+	});
+	$(".list").click(function(){
+		$('.list').removeClass('active');
+		$(this).addClass('active');
 	});
 	$("#widget").mouseover(function(){
 		if($('#widget').attr('class') == 'widget'){
