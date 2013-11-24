@@ -99,6 +99,19 @@ html,body
 	padding: 0;
 	border:none
 }
+.content a
+{
+	color: #716B7A;
+	line-height: 200%;
+	text-decoration: none;
+	text-shadow: -1px 1px 0 rgba(255, 255, 255, 0.8);
+}
+.content a:hover,
+.content a:focus
+{
+	background: #E0E0E0;
+	color: #428BCA;
+}
 .footer
 {
 	float: left;
