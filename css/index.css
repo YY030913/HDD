@@ -243,7 +243,7 @@ html,body
 	position: fixed;
 	right: -420px;
 	background: #FFF; 
-	transition: right 0.8s;	
+	transition: right 0.5s;	
 	box-shadow: -5px 0px 5px rgba(0,0,0,0.6);
 	z-index: 999;
 }
@@ -261,7 +261,7 @@ html,body
 	overflow: auto;
 	position: fixed;
 	right: 10px;
-	transition: right 0.8s;
+	transition: right 0.5s;
 	z-index: 998;
 }
 .widget.show
