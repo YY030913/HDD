@@ -10,7 +10,7 @@
 	$('.menu').css("text-indent", menuWidth*0.18+'px');
 	$('.footer').css("line-height", footerHeight+'px');
 	$('.footer').css("font-size", footerHeight*0.45+'px');
-	$('.version').css("font-size", navHeight*0.15+'px');
+	$('.version').css("font-size", navHeight*0.12+'px');
 }
 
 function dutyUpdate(){
