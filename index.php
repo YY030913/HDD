@@ -53,7 +53,7 @@ $row=mysql_fetch_array($result);
 			<p><input type="password" id="password" placeholder="请输入密码" /></p>
 			<p><input type="password" id="password_repeat" placeholder="请再次输入密码" /></p>
 			<p><input type="text" id="email" placeholder="请输入邮箱" /></p>
-			<p><button id="reset" class="reset">重置</button><button id="submit" class="submit">提交</button></p>
+			<p><button id="reset" class="reset">重置</button><button id="register" class="register">注册</button></p>
 		</div>
 	</div>
 	<div class="menu">
