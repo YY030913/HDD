@@ -31,9 +31,30 @@ $row=mysql_fetch_array($result);
 		<p>计算机学院学工办自助平台</p>
 		<div class="version"><a href="./changelog.php"><?php include "version.php"; ?></a></p></div>
 	</div>
-	<div class="widget" id="widget"><span><img src="./images/arrow.png" width="30%"></img></span></div>
+	<div class="widget" id="widget"><span><img src="./images/arrow.png" height="50px"></img></span></div>
 	<div class="userCenter" id="userCenter">
-
+		<div class="info">
+			<div class="name">
+				<p>未登录</p>
+			</div>
+			<div class="avatar">
+				<div class="avatar_mask"></div>
+				<img src="./images/noimg.jpg"></img>
+			</div>
+		</div>
+		<div class="options">
+			<ul>
+				<li><a href="#" class="optionsBtn selected" rel="register">注册</a></li>
+				<li><a href="#" class="optionsBtn" rel="login">登陆</a></li>
+			</ul>
+		</div>
+		<div class="optionContent">
+			<p><input type="text" id="username" placeholder="请输入用户名" /></p>
+			<p><input type="password" id="password" placeholder="请输入密码" /></p>
+			<p><input type="password" id="password_repeat" placeholder="请再次输入密码" /></p>
+			<p><input type="text" id="email" placeholder="请输入邮箱" /></p>
+			<p><button id="reset" class="reset">重置</button><button id="submit" class="submit">提交</button></p>
+		</div>
 	</div>
 	<div class="menu">
 		<ul>

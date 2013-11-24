@@ -242,6 +242,10 @@ window.onload = function(){
 		$('.list').removeClass('active');
 		$(this).addClass('active');
 	});
+	$(".optionsBtn").click(function(){
+		$('.optionsBtn').removeClass('selected');
+		$(this).addClass('selected');
+	});
 	$("#widget").mouseover(function(){
 		if($('#widget').attr('class') == 'widget'){
 			$(this).find('img').attr('src','./images/arrow-red.png');
