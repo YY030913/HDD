@@ -93,6 +93,7 @@ html,body
 	right: 14%;
 	top: 25%;
 	height: 70%;
+	line-height: 30px;
 	overflow:auto;
 	text-align: center;
 }
