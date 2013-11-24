@@ -7,9 +7,7 @@
 	$('.nav-bar').css("line-height", navHeight+'px');
 	$('.nav-bar').css("font-size", navHeight*0.3+'px');
 	$('.nav-bar').css("text-indent", navWidth*0.1+'px');
-	$('.menu').css("font-size", menuHeight*0.5+'px');
 	$('.menu').css("text-indent", menuWidth*0.18+'px');
-	$('.menu').css("line-height", menuHeight+'px');
 	$('.footer').css("line-height", footerHeight+'px');
 	$('.footer').css("font-size", footerHeight*0.45+'px');
 	$('.version').css("font-size", navHeight*0.15+'px');
@@ -218,7 +216,21 @@ function center(){
 	}
 }
 
+function testScreen(){
+	if(screen.width < 1024){
+		layer.alert('您的屏幕分辨率太小，网页可能无法正常显示。</br>（推荐分辨率1024x768以上）', 8);
+	}else{
+		if(document.body.offsetWidth < 1020){
+			layer.alert('您的浏览器没有最大化吗？</br>当浏览器窗口宽度小于1024时网页可能无法正常显示哦！', 8);
+		}
+	}
+}
+
 window.onload = function(){
+	testScreen();
+	$(window).resize(function() {
+		testScreen();
+	});
 	$("body").iealert({
 		support: "ie8",
 		title: "你的浏览器过时了！",
