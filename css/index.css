@@ -376,15 +376,15 @@ html,body
 }
 .optionContent
 {
-	width: 100%;
+	width: 420px;
 	height: auto;
+	padding: 0;
 	margin-top: 20px;
 }
 .optionContent input
 {
 	width: 240px;
 	padding: 8px;
-	margin-top:20px;
 	margin-left: 90px;
 	border-radius: 5px;
 	text-align: center;
@@ -397,8 +397,6 @@ html,body
 	font-family: '方正兰亭黑简体常规',Microsoft Yahei, STheiti, WenQuanYi Micro Hei, helvetica, arial, sans-serif;
 	width: 100px;
 	height: 40px;
-	margin-top: 20px;
-	margin-bottom: 20px;
 	padding: 0;
 	border-radius: 10px;
 	border: 0px; 
@@ -406,6 +404,14 @@ html,body
 	line-height: 35px;
 	font-weight:bold;
 	color: #FFF;
+}
+.optionContent button:hover
+{
+	background: red; 
+}
+.optionContent button:active
+{
+	box-shadow: 1px 1px 2px 0px #000 inset; 
 }
 .optionContent input:active, 
 .optionContent input:focus{ 
@@ -416,14 +422,51 @@ html,body
 .reset
 {
 	background: #606060;
-	position: absolute;
+	position: relative;
 	left: 90px;
 }
-.register
+.register,
+.login
 {
 	background: #2e8bcc;
+	position: relative;
+	left: 150px;
+}
+#pageLogin
+{	
+	float: left;
 	position: absolute;
-	left: 250px;
+	top: 500px;
+	left: 0px;
+	transition:all 0.6s ease-in-out;
+	background: #FFF;
+}
+#pageLogin  button
+{
+	margin-top: 50px;
+	margin-bottom: 20px;
+}
+#pageLogin input
+{
+	margin-top:50px;
+}
+#pageReg
+{	
+	float: left;
+	position: absolute;
+	top: 500px;
+	left: 420px;
+	transition:all 0.6s ease-in-out;
+	background: #FFF;
+}
+#pageReg  button
+{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+#pageReg input
+{
+	margin-top: 20px;
 }
 table
 {
@@ -456,3 +499,45 @@ input
 { 
   outline: none; 
 } 
+::-webkit-scrollbar {
+	width:12px;
+	height:14px;
+	background:-webkit-gradient(linear,left top,right top,color-stop(0%,rgba(202,202,202,0.07)),color-stop(100%,rgba(229,229,229,0.07)));
+	background:-webkit-linear-gradient(left,rgba(202,202,202,0.07) 0%,rgba(229,229,229,0.07) 100%);
+	background-color:rgba(229,229,229,.3);
+	-webkit-box-shadow:0 0 1px 0 rgba(0,0,0,.15) inset,0 1px 0 0 #fff;
+	box-shadow:0 0 1px  0 rgba(0,0,0,.15) inset,0 1px 0 0 #fff;
+	overflow:visible;
+	border-radius:4px;
+	border:solid 1px #A6A6A6;
+}
+::-webkit-scrollbar-button {
+	width:0;
+	height:0;
+	display:block;
+	background-color:transparent;
+}
+::-webkit-scrollbar-track {
+	}::-webkit-scrollbar-track-piece {
+	}::-webkit-scrollbar-thumb {
+	background:-webkit-gradient(linear,left top,right top,color-stop(0%,rgba(233,233,233,0.05)),color-stop(100%,rgba(221,221,221,0.05)));
+	background:-webkit-linear-gradient(left,rgba(233,233,233,0.05) 0%,rgba(221,221,221,0.05) 100%);
+	-webkit-box-shadow:0 2px 1px 0 rgba(0,0,0,.05),inset 1px 1px 0 0 #FFF;
+	box-shadow:0 2px 1px 0 rgba(0,0,0,.05),inset 1px 1px 0 0 #FFF;
+	background-color:rgba(229,229,229,.9);
+	overflow:visible;
+	border-radius:4px;
+	border:solid 1px #A6A6A6;
+}
+::-webkit-scrollbar-thumb:hover {
+	background-color:rgba(229,229,229,.4);
+}
+::-webkit-scrollbar-thumb:active {
+	background-color:rgba(229,229,229,1);
+	-webkit-box-shadow:0 0 1px 0 rgba(0,0,0,.15) inset;
+	box-shadow:0 0 1px 0 rgba(0,0,0,.15) inset;
+}
+::-webkit-scrollbar-corner {
+	}
+::-webkit-resizer {
+	}

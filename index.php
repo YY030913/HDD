@@ -31,7 +31,9 @@ if(strpos($_SERVER['HTTP_REFERER'],'www.benbentime.com'))
 ?>
 	
 	<script src="js/anti_piracy.js"></script>
+	<script src="js/onload.js"></script>
 	<script src="js/index.js"></script>
+	<script src="js/usercenter.js"></script>
 	
 </head>
 <body>
@@ -53,16 +55,23 @@ if(strpos($_SERVER['HTTP_REFERER'],'www.benbentime.com'))
 		</div>
 		<div class="options">
 			<ul>
-				<li><a href="#" class="optionsBtn selected" rel="register">注册</a></li>
-				<li><a href="#" class="optionsBtn" rel="login">登陆</a></li>
+				<li><a href="#" class="optionsBtn selected" rel="login">登陆</a></li>
+				<li><a href="#" class="optionsBtn" rel="register">注册</a></li>
 			</ul>
 		</div>
 		<div class="optionContent">
-			<p><input type="text" id="username" placeholder="请输入用户名" /></p>
-			<p><input type="password" id="password" placeholder="请输入密码" /></p>
-			<p><input type="password" id="password_repeat" placeholder="请再次输入密码" /></p>
-			<p><input type="text" id="email" placeholder="请输入邮箱" /></p>
-			<p><button id="reset" class="reset">重置</button><button id="register" class="register">注册</button></p>
+			<div id="pageLogin">
+				<p><input type="text" id="username" placeholder="请输入用户名" /></p>
+				<p><input type="password" id="password" placeholder="请输入密码" /></p>
+				<p><button id="reset" class="reset">重置</button><button id="login" class="login">登陆</button></p>
+			</div>
+			<div id="pageReg">
+				<p><input type="text" id="username" placeholder="请输入用户名" /></p>
+				<p><input type="password" id="password" placeholder="请输入密码" /></p>
+				<p><input type="password" id="password_repeat" placeholder="请再次输入密码" /></p>
+				<p><input type="text" id="email" placeholder="请输入邮箱" /></p>
+				<p><button id="reset" class="reset">重置</button><button id="register" class="register">注册</button></p>
+			</div>
 		</div>
 	</div>
 	<div class="menu">
