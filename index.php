@@ -36,6 +36,7 @@ $row=mysql_fetch_array($result);
 		<div class="info">
 			<div class="name">
 				<p>未登录</p>
+				<p style="font-size:15px;">预览版，纯观赏，功能无效。。。</p>
 			</div>
 			<div class="avatar">
 				<div class="avatar_mask"></div>
