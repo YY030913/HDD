@@ -1,4 +1,5 @@
-﻿<?php
+﻿//洪爹爹的尝试
+<?php
 header("Cache-Control: no-cache, must-revalidate");
 include "./config/config.php";
 $sql="SELECT * FROM hdd_onduty WHERE enabled = 1 ORDER BY time DESC";
