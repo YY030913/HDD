@@ -1,0 +1,14 @@
+.warning
+{
+	font-family: '方正兰亭黑简体常规',Microsoft Yahei, STheiti, WenQuanYi Micro Hei, helvetica, arial, sans-serif;
+	width: 100px;
+	height: 40px;
+	margin-top: 20px;
+	padding: 0;
+	border-radius: 10px;
+	font-size: 20px;
+	line-height: 35px;
+	font-weight:bold;
+	color: #FFF;
+	background: red;
+}

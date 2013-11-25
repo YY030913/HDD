@@ -11,6 +11,11 @@ include "../config/config.php";
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
+	<link rel="stylesheet" type="text/css" href="./css/button.css" />
+	<script src="../js/jquery/jquery-1.9.1.min.js"></script>
+	<script src="./js/core.js"></script>
+	
 	<title>计算机学院学工办——值班人员管理</title>
 </head>
 <body>
@@ -19,6 +24,7 @@ include "../config/config.php";
 <p>姓名：<input type="text" name="name" /></p>
 <p>联系电话：<input type="text" name="mobile" /></p>
 <p><input type="submit" value="提交" /></p>
+</form>
 <hr>
 <?php
 $sql="SELECT * FROM hdd_onduty WHERE enabled = 1";
@@ -35,7 +41,7 @@ if($num)
 
 <hr>
 <h2>历史值班人员</h2>
-<p><a href="./php/delall.php?type=duty">清空所有</a></p>
+<p><button class="warning" id="duty">清空记录</button></p>
 <?php
 $sql="SELECT * FROM hdd_onduty ORDER BY time DESC";
 $result=@mysql_query($sql) or die(mysql_error());

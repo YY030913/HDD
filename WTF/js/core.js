@@ -55,3 +55,30 @@ function disphis(id){
 	});
 	layer.close(load);
 }
+
+function delall(type){
+	if(confirm("确认要清空？")){
+		$.ajax({
+			type: "GET",
+			url: "./php/delall.php", 
+			data: "&type="+type,
+			success: 
+			function(returnKey){
+				if(returnKey==1){
+					alert("删除成功！");
+					window.location.reload(); 
+				}else{
+					alert("删除失败！");
+					window.location.reload(); 
+				}
+			}
+		});
+	}
+}
+
+window.onload = function(){
+	$('.warning').click(function(){
+		var type = $(this).attr('id');
+		delall(type);
+	});
+}

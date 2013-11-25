@@ -11,6 +11,11 @@ include "../config/config.php";
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
+	<link rel="stylesheet" type="text/css" href="./css/button.css" />
+	<script src="../js/jquery/jquery-1.9.1.min.js"></script>
+	<script src="./js/core.js"></script>
+	
 	<title>计算机学院学工办——修改教室状态</title>
 </head>
 <body>
@@ -54,7 +59,7 @@ if(!$num)
 	echo "<p>还没有预约过办公室呢！</p>";
 }else{
 ?>
-<p><a href="./php/delall.php?type=classroom">清空预约</a></p>
+<p><button class="warning" id="classroom">清空预约</button></p>
 <table border="1">
 	<tr height="30">
 		<td width="60">星期</td>
