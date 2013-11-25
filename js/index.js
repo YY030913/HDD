@@ -192,7 +192,7 @@ function submit(id){
 }
 
 function extend(){
-	$('.content').html('<h2><a href="http://blog.sina.com.cn/u/2450629767">学工助理博客</a></h2><h2><a href="http://www.benbentime.com">计算机学院工作网</a></h2><h2><a href="http://blog.sina.com.cn/hbut2013">13级年级博客</a></h2><h2><a href="http://blog.sina.com.cn/u/2449956125">12级年级博客</a></h2><h2><a href="http://blog.sina.com.cn/u/2449939115">11级年级博客</a></h2><h2><a href="http://blog.sina.com.cn/u/2450656273">10级年级博客</a></h2>');
+	$('.content').html('<h2><a href="http://blog.sina.com.cn/u/2450629767">学工助理博客</a></h2><h2><a href="http://www.benbentime.com">计算机学院工作网</a></h2><h2><a href="http://blog.sina.com.cn/hbut2013">13级年级博客</a></h2><h2><a href="http://blog.sina.com.cn/u/2449956125">12级年级博客</a></h2><h2><a href="http://blog.sina.com.cn/u/2449939115">11级年级博客</a></h2><h2><a href="http://blog.sina.com.cn/u/2450656273">10级年级博客</a></h2><h3>湖工大查分客户端现已下线，查分功能将整合到即将发布的用户中心内，敬请期待！</h3>');
 }
 
 function center(){
