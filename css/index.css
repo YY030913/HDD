@@ -89,7 +89,7 @@ html,body
 .content
 {
 	float: left;
-	width: 55%;
+	width: 54%;
 	position: fixed;
 	right: 14%;
 	top: 25%;
@@ -177,7 +177,7 @@ html,body
 {
 	overflow: auto;
 	float: left;
-	width: 50%;
+	width: 49.2%;
 	height: 40px;
 	background: #7fb80e;
 }
@@ -185,7 +185,7 @@ html,body
 {
 	overflow: auto;
 	float: left;
-	width: 48.5%;
+	width: 49.3%;
 	border-left: solid #000 1px;
 	height: 40px;
 	background: #7fb80e;
