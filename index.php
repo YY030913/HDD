@@ -74,6 +74,7 @@ if(strpos($_SERVER['HTTP_REFERER'],'www.benbentime.com'))
 			</div>
 		</div>
 	</div>
+	<script>$('input').placeholder();</script>
 	<div class="menu">
 		<ul>
 			<li><a class="list" rel="onduty" href="#" onclick="dutyUpdate();">值班人员</a></li>
