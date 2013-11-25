@@ -239,7 +239,8 @@ html,body
 {
 	width: 420px;
 	height: 100%;
-	overflow: auto;
+	overflow-y: auto;
+	overflow-x: hidden;
 	position: fixed;
 	right: -420px;
 	background: #FFF; 
@@ -397,8 +398,10 @@ html,body
 	width: 100px;
 	height: 40px;
 	margin-top: 20px;
+	margin-bottom: 20px;
 	padding: 0;
 	border-radius: 10px;
+	border: 0px; 
 	font-size: 20px;
 	line-height: 35px;
 	font-weight:bold;
@@ -420,7 +423,7 @@ html,body
 {
 	background: #2e8bcc;
 	position: absolute;
-	right: 75px;
+	left: 250px;
 }
 table
 {
