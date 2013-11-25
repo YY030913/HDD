@@ -263,6 +263,7 @@ window.onload = function(){
 	$(window).resize(function() {
 		callBack();
 	});
+	anti_piracy(key);
 }
 
 

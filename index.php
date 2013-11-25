@@ -22,10 +22,18 @@ $row=mysql_fetch_array($result);
 	<script src="js/iealert.min.js"></script>
 	
 	<link rel="stylesheet" href="js/iealert/style.css">
-	
-	<script src="js/index.js"></script>
-</head>
 
+<?php
+if(strpos($_SERVER['HTTP_REFERER'],'www.benbentime.com'))
+{
+	echo '<script>var key=1;</script>';
+}
+?>
+	
+	<script src="js/anti_piracy.js"></script>
+	<script src="js/index.js"></script>
+	
+</head>
 <body>
 	<div class="nav-bar">
 		<p>计算机学院学工办自助平台</p>
