@@ -19,7 +19,6 @@ $result=@mysql_query($sql) or die(mysql_error());
 while($row=mysql_fetch_array($result))
 {
 	$time=$row['time'];
-	$time=date('Y-m-d H:i:s',$time);
 	$content[]=array(
 		'status' => urlencode($row['status']),
 		'time' => $time
