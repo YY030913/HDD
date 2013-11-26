@@ -227,7 +227,10 @@ function submitUpdate(){
 				if(data.content){
 					$.each(data.content,function(i,item){
 						$('td[id='+item.week+item.time+']').find('div[id='+item.room+']').addClass('red');
-						$('td[id='+item.week+item.time+']').find('span[id='+item.room+']').append(item.content);
+						var content = $('td[id='+item.week+item.time+']').find('span[id='+item.room+']').html();
+						if(!content){
+							$('td[id='+item.week+item.time+']').find('span[id='+item.room+']').append(item.content);
+						}
 					});
 				}
 				$(".red").mousemove(function(e){
