@@ -39,6 +39,7 @@ function register(){
 					$.layer({
 						area : ['auto','auto'],
 						time : 3,
+						closeBtn: false,
 						title : false,
 						dialog : {msg:'注册成功！', type : 1}	
 					});

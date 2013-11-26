@@ -1,4 +1,5 @@
 <?php
+session_start();
 if(!$_POST['user'] || !$_POST['pass'] || !$_POST['email'])
 {
 	echo "非法访问！";
@@ -30,6 +31,10 @@ if(!mysql_num_rows($result))
 {
 	$sql="INSERT INTO hdd_user (user, pass, email, reg_ip, time) VALUES ('$user', '$pass', '$email', '$ip', NOW())";
 	@mysql_query($sql) or die;
+	$sql="SELECT * FROM hdd_user WHERE user='$user'";
+	$result=@mysql_query($sql) or die;
+	$row=mysql_fetch_array($result);
+	$_SESSION['uid']=$row['id'];
 	echo 1;
 }else{
 	$row=mysql_fetch_array($result);
