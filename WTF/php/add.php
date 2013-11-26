@@ -4,7 +4,7 @@ if(!isset($_SESSION['login']))
 {
 	exit;
 }
-include "../../config/config.php";
+require_once "../../config/config.php";
 $name=$_POST['name'];
 $position=$_POST['position'];
 $mobile=$_POST['mobile'];

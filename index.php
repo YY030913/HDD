@@ -1,6 +1,6 @@
 ﻿<?php
 header("Cache-Control: no-cache, must-revalidate");
-include "./config/config.php";
+require_once "./config/config.php";
 $sql="SELECT * FROM hdd_onduty WHERE enabled = 1 ORDER BY time DESC";
 $result=@mysql_query($sql) or die(mysql_error());
 $num=mysql_num_rows($result);
@@ -39,7 +39,7 @@ if(strpos($_SERVER['HTTP_REFERER'],'www.benbentime.com'))
 <body>
 	<div class="nav-bar">
 		<p>计算机学院学工办自助平台</p>
-		<div class="version"><a href="./changelog.php"><?php include "version.php"; ?></a></p></div>
+		<div class="version"><a href="./changelog.php"><?php require_once "version.php"; ?></a></p></div>
 	</div>
 	<div class="widget" id="widget"><span><img src="./images/arrow.png" height="50px"></img></span></div>
 	<div class="userCenter" id="userCenter">

@@ -4,7 +4,7 @@ if(!isset($_SESSION['login']))
 {
 	exit;
 }
-include "../../config/config.php";
+require_once "../../config/config.php";
 $id=$_GET['id'];
 $sql="DELETE FROM hdd_teachers WHERE id='$id'";
 @mysql_query($sql) or die(mysql_error());

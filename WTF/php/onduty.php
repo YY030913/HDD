@@ -4,7 +4,7 @@ if(!isset($_SESSION['login']))
 {
 	exit;
 }
-include "../../config/config.php";
+require_once "../../config/config.php";
 if($_GET['type'] == 'over')
 {
 	$sql="UPDATE hdd_onduty SET enabled = 0";

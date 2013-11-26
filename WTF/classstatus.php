@@ -5,7 +5,7 @@ if(!isset($_SESSION['login']))
 	echo '<script>alert("请先登录！");window.location.href="./index.php";</script>';
 	exit;
 }
-include "../config/config.php";
+require_once "../config/config.php";
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 tdansitional//EN" "http://www.w3.org/td/xhtml1/DTD/xhtml1-tdansitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">

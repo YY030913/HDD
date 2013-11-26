@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "../config/config.php";
+require_once "../config/config.php";
 
 $time=time();
 

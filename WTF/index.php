@@ -9,7 +9,7 @@ session_start();
 </head>
 <body>
 <?php
-include "../config/config.php";
+require_once "../config/config.php";
 if(!$_POST['password'] && !$_SESSION['login'])
 {
 ?>
@@ -20,11 +20,11 @@ if(!$_POST['password'] && !$_SESSION['login'])
 </form>
 <?php
 }
-if(isset($_POST['password']) && $_POST['password'] != $password)
+if(isset($_POST['password']) && $_POST['password'] != $_password)
 {
 	echo '<script>alert("密码不正确！");window.location.href="./index.php";</script>';
 }
-if((isset($_POST['password']) && $_POST['password'] == $password) || isset($_SESSION['login']))
+if((isset($_POST['password']) && $_POST['password'] == $_password) || isset($_SESSION['login']))
 {
 	$_SESSION['login'] = '1';
 ?>
