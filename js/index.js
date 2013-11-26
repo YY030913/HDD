@@ -133,8 +133,12 @@ function order(id)
 	var timeArr=new Array('','1-2节','3-4节','午休','5-6节','7-8节','9-10节','IN');
 	var weekArr=new Array('','星期一','星期二','星期三','星期四','星期五','星期六','星期日');
 	var roomArr=new Array('','书屋','会议室');
-	$('.order').html('<h3>您将要预定的是</h3><p>'+weekArr[week]+' '+timeArr[time]+' 的'+roomArr[room]+'</p><p>请务必注明专业年级姓名以及详细用途</p><input id="content" type="text" placeholder="请输入详情" /></p><p><span><input id="vcode" type="text" placeholder="请输入验证码" /><img id="code_img" src="./php/vcode.php" alt="看不清，请点击刷新" title="看不清，请点击刷新" onClick="this.src=this.src" /></span><p><button id="submit">提交</button><button id="cancle">取消</button></p>');
+	$('.order').html('<h3>您将要预定的是</h3><p>'+weekArr[week]+' '+timeArr[time]+' 的'+roomArr[room]+'</p><p>请务必注明专业年级姓名以及详细用途</p><input id="content" type="text" placeholder="请输入详情" /></p><p><span><input id="vcode" type="text" placeholder="请输入验证码" /><img id="code_img" src="./php/vcode.php" alt="看不清，请点击刷新" title="看不清，请点击刷新" /></span><p><button id="submit">提交</button><button id="cancle">取消</button></p>');
 	$('input').placeholder();
+	$('#code_img').click(function(){
+		var append = '?' + new Date().getTime() + 'a' + Math.random();
+		$(this).attr('src',$('#code_img').attr('src') + append);
+	});
 	var i=$.layer({
 		shade : [0.5, '#000', true],
 		closeBtn : [0, false],
@@ -172,9 +176,11 @@ function submit(id){
 					layer.close(index);
 					$.layer({
 						area : ['auto','auto'],
+						closeBtn: false,
+						time: 2,
 						dialog : {msg:data.content,type : 1}	
 					});
-					classUpdate('order');
+					submitUpdate();
 				}else if(data.error == '1'){               //信息不全
 					$.layer({
 						area : ['auto','auto'],
@@ -207,6 +213,49 @@ function submit(id){
 			dialog : {msg:'请输入详情',type : 8}	
 		});
 	}
+}
+
+function submitUpdate(){
+	setTimeout(function(){
+		var load=layer.load(0);
+		$.ajax({
+			url: './php/api.php',
+			data: '&type=classroom',
+			dataType: 'json',
+			success: function(data){
+				layer.close(load);
+				if(data.content){
+					$.each(data.content,function(i,item){
+						$('td[id='+item.week+item.time+']').find('div[id='+item.room+']').addClass('red');
+						$('td[id='+item.week+item.time+']').find('span[id='+item.room+']').append(item.content);
+					});
+				}
+				$(".red").mousemove(function(e){
+					var height = $(window).height();
+					$(this).find('.tag').css('display','block');
+					$(this).find('.tag').css('left', e.pageX);
+					$(this).find('.tag').css('bottom', height - e.pageY);
+				});
+				$(".red").mouseleave(function(e){
+					$(this).find('.tag').css('display','none');
+				});
+				$("[class=half],[class=halfright]").mouseover(function(){
+					$(this).addClass('over');
+				});
+				$("[class=half],[class=halfright]").mouseleave(function(){
+					$(this).removeClass('over');
+				});
+				$("[class=half],[class=halfright]").click(function(){
+					var id = $(this).parent('.sign').attr('id')+$(this).attr('id');
+					order(id);
+				});
+			},
+			error: function(){
+				layer.close(load);
+				layer.alert(warning, 8);
+			}
+		});
+	},2000);
 }
 
 function extend(){
