@@ -424,7 +424,7 @@ html,body
 	width: 100px;
 	background: #606060;
 	position: relative;
-	left: 90px;
+	margin-left: 90px;
 }
 .register,
 .login
@@ -432,7 +432,7 @@ html,body
 	width: 100px;
 	background: #2e8bcc;
 	position: relative;
-	left: 150px;
+	margin-left: 60px;
 }
 .logout
 {
