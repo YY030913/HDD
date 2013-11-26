@@ -45,8 +45,8 @@ if(strpos($_SERVER['HTTP_REFERER'],'www.benbentime.com'))
 	<div class="userCenter" id="userCenter">
 		<div class="info">
 			<div class="name">
-				<p>未登录</p>
-				<p style="font-size:15px;">预览版，纯观赏，功能无效。。。</p>
+				<p id="name">未登录</p>
+				<p id="sign" style="font-size:15px;">预览版，纯观赏，功能无效。。。</p>
 			</div>
 			<div class="avatar">
 				<div class="avatar_mask"></div>
@@ -61,15 +61,15 @@ if(strpos($_SERVER['HTTP_REFERER'],'www.benbentime.com'))
 		</div>
 		<div class="optionContent">
 			<div id="pageLogin">
-				<p><input type="text" id="username" placeholder="请输入用户名" /></p>
-				<p><input type="password" id="password" placeholder="请输入密码" /></p>
+				<p><input type="text" id="logUsername" placeholder="请输入用户名" /></p>
+				<p><input type="password" id="logPassword" placeholder="请输入密码" /></p>
 				<p><button id="reset" class="reset">重置</button><button id="login" class="login">登陆</button></p>
 			</div>
 			<div id="pageReg">
-				<p><input type="text" id="username" placeholder="请输入用户名" /></p>
-				<p><input type="password" id="password" placeholder="请输入密码" /></p>
-				<p><input type="password" id="password_repeat" placeholder="请再次输入密码" /></p>
-				<p><input type="text" id="email" placeholder="请输入邮箱" /></p>
+				<p><input type="text" id="regUsername" placeholder="请输入用户名" /></p>
+				<p><input type="password" id="regPassword" placeholder="请输入密码" /></p>
+				<p><input type="password" id="regPassword_repeat" placeholder="请再次输入密码" /></p>
+				<p><input type="text" id="regEmail" placeholder="请输入邮箱" /></p>
 				<p><button id="reset" class="reset">重置</button><button id="register" class="register">注册</button></p>
 			</div>
 		</div>

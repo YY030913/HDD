@@ -432,6 +432,14 @@ html,body
 	position: relative;
 	left: 150px;
 }
+.logout
+{
+	background: #606060;
+	position: relative;
+	left: 50%;
+	margin-left: -50px;
+	top: 60px;
+}
 #pageLogin
 {	
 	float: left;

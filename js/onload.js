@@ -41,6 +41,15 @@ window.onload = function(){
 			$(this).find('img').attr('src','./images/arrow-back.png');
 		}
 	});
+	$(".reset").click(function(){
+		$('input').val('');
+	});
+	$("#login").click(function(){
+		login();
+	});
+	$("#register").click(function(){
+		register();
+	});
 	$(window).resize(function() {
 		callBack();
 	});

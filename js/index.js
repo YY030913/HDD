@@ -1,4 +1,6 @@
-﻿function callBack(){
+﻿var warning='访问过快导致时空出现异常，数据丢失在了次元空间裂缝之中。。。预计3秒后恢复正常。'
+
+function callBack(){
 	var navHeight = $('.nav-bar').height();
 	var navWidth = $('.nav-bar').width();
 	var menuWidth = $('.menu').width();
@@ -26,6 +28,10 @@ function dutyUpdate(){
 			}else{
 				$('.content').html('<div class="welcome"><h2>这个时间还没有值班人员呢！</h2><img src="./images/duty.jpg" width="80%"></img></div>');
 			}
+		},
+		error: function(){
+			layer.close(load);
+			layer.alert(warning, 8);
 		}
 	});
 }
@@ -44,6 +50,10 @@ function teaUpdate(){
 			});
 			result += '</table>';
 			$('.content').html(result);	
+		},
+		error: function(){
+			layer.close(load);
+			layer.alert(warning, 8);
 		}
 	});
 }
@@ -105,6 +115,10 @@ function classUpdate(){
 				var id = $(this).parent('.sign').attr('id')+$(this).attr('id');
 				order(id);
 			});
+		},
+		error: function(){
+			layer.close(load);
+			layer.alert(warning, 8);
 		}
 	});
 }
@@ -181,6 +195,10 @@ function submit(id){
 					var append = '?' + new Date().getTime() + 'a' + Math.random();
 					$('#code_img').attr('src',$('#code_img').attr('src') + append);
 				}
+			},
+			error: function(){
+				layer.close(load);
+				layer.alert(warning, 8);
 			}
 		});
 	}else{
