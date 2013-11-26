@@ -216,6 +216,8 @@ function submit(id){
 }
 
 function submitUpdate(){
+	$("[class=half],[class=halfright]").unbind('mouseover');
+	$("[class=half],[class=halfright]").unbind('mouseleave');
 	setTimeout(function(){
 		var load=layer.load(0);
 		$.ajax({
