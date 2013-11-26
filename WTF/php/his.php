@@ -5,7 +5,7 @@ if(!isset($_SESSION['login']))
 	echo "请登录";
 	exit;
 }
-require_once "../../config/config.php";
+require_once "../config/config.php";
 $id=$_GET['id'];
 $start=$_GET['start'].' 00:00:00';
 $stop=$_GET['stop'].' 23:59:59';

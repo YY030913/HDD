@@ -6,9 +6,6 @@ $_pass="zyb940708";
 $_dbname="hdd_is_sb";
 $_charset="utf8";
 
-//后台密码设置
-$_password="zyb940708";
-
 //访问频率限制，单位秒
 $_keep=2;
 $_alert='<p>别刷了，省省吧。。</p><p>我是绝对不会告诉你数据库的密码是hdd_is_sb的！</p><p><span style="display:none;">信了你就输了~</span></p>';

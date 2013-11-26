@@ -4,7 +4,7 @@ if(!isset($_SESSION['login']))
 {
 	exit;
 }
-require_once "../../config/config.php";
+require_once "../config/config.php";
 $week=$_POST['week'];
 $time=$_POST['time'];
 $room=$_POST['room'];

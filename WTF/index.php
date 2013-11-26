@@ -9,7 +9,7 @@ session_start();
 </head>
 <body>
 <?php
-require_once "../config/config.php";
+require_once "./config/config.php";
 if(!$_POST['password'] && !$_SESSION['login'])
 {
 ?>

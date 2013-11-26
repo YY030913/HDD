@@ -5,7 +5,7 @@ if(!isset($_SESSION['login']))
 	echo 0;
 	exit;
 }
-require_once "../../config/config.php";
+require_once "../config/config.php";
 
 if($_GET['type'] == 'classroom')
 {
