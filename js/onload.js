@@ -1,5 +1,6 @@
 window.onload = function(){
 	testScreen();
+	checklogin();
 	$(window).resize(function() {
 		testScreen();
 	});

@@ -13,6 +13,7 @@ function switcher(rel){
 
 function register(){
 	$('#register').attr('disabled',true);
+	$('#register').addClass('disabled');
 	var username = $('#regUsername').val();
 	var password = $('#regPassword').val();
 	var password_repeat = $('#regPassword_repeat').val();
@@ -38,7 +39,7 @@ function register(){
 				if(returnKey == '1'){
 					$.layer({
 						area : ['auto','auto'],
-						time : 3,
+						time : 2,
 						closeBtn: false,
 						title : false,
 						dialog : {msg:'注册成功！', type : 1}	
@@ -55,10 +56,12 @@ function register(){
 		});
 	}
 	$('#register').attr('disabled',false);
+	$('#register').removeClass('disabled');
 }
 
 function login(){
 	$('#login').attr('disabled',true);
+	$('#login').addClass('disabled');
 	var username = $('#logUsername').val();
 	var password = $('#logPassword').val();
 	if(!username){
@@ -76,7 +79,7 @@ function login(){
 				if(returnKey == '1'){
 					$.layer({
 						area : ['auto','auto'],
-						time : 3,
+						time : 2,
 						closeBtn: false,
 						title : false,
 						dialog : {msg:'登陆成功！', type : 1}	
@@ -93,10 +96,12 @@ function login(){
 		});
 	}
 	$('#login').attr('disabled',false);
+	$('#login').removeClass('disabled');
 }
 
 function logout(){
 	$('#logout').attr('disabled',true);
+	$('#logout').addClass('disabled');
 	var load=layer.load(0);
 	setTimeout(function(){
 		$.ajax({
@@ -105,8 +110,9 @@ function logout(){
 				window.location.reload(); 
 			}
 		});
-	}, 3000);
+	}, 2000);
 	$('#logout').attr('disabled',false);
+	$('#logout').removeClass('disabled');
 }
 
 function loadCenter(){
@@ -136,7 +142,17 @@ function loadCenter(){
 					$('#name').html(name);
 					$('#sign').html(sign);
 					$('.options').html('');
-					$('.optionContent').html('<p><button class="logout" id="logout">退出登陆</button>');
+					if(data.content.verify == '0'){
+						$('.optionContent').html('<h3 style="margin-top:50px;">你必须先验证邮箱和教务平台账号</h3><p><button class="normal" id="sendmail">发送验证邮件</button></p><p><button class="normal" id="bindaccount">绑定教务平台账号</button></p><p><button class="logout" id="logout">退出登陆</button></p>');
+					}else{
+						$('.optionContent').html('<h3 style="margin-top:50px;">你必须先验证邮箱和教务平台账号</h3><p><button class="normal disabled" id="sendmail">邮箱已验证</button></p><p><button class="normal" id="bindaccount">绑定教务平台账号</button></p><p><button class="logout" id="logout">退出登陆</button></p>');
+					}
+					$("#sendmail").click(function(){
+						sendmail();
+					});
+					$("#bindaccount").click(function(){
+						layer.alert('功能开发中。。。', 8);
+					});
 					$("#logout").click(function(){
 						logout();
 					});
@@ -149,7 +165,49 @@ function loadCenter(){
 				layer.alert(warning, 8);
 			}
 		});
-	}, 3000);
+	}, 2000);
 }
-	
-			
+
+function sendmail(){
+	var load=layer.load(0);
+	$.ajax({
+		url: './php/sendmail.php',
+		success: function(data){
+			layer.close(load);
+			if(data == '1'){
+				$('#sendmail').attr('disabled',true);
+				$('#sendmail').addClass('disabled');
+				var time=60;
+				var i=setInterval(function(){
+					time -= 1;
+					$('#sendmail').html('发送成功('+time+')');
+					if(time == 0){
+						$('#sendmail').html('发送验证邮件');
+						$('#sendmail').attr('disabled',false);
+						$('#sendmail').removeClass('disabled');
+						clearInterval(i);
+					}
+				},1000);
+			}else{
+				layer.alert(data, 8);
+			}
+		},
+		error: function(){
+			layer.close(load);
+			layer.alert(warning, 8);
+		}
+	});	
+}
+				
+
+function checklogin(){
+	$.ajax({
+		url: './php/checklogin.php',
+		success: function(data){
+			if(data == '1'){
+				var load=layer.load(0);
+				loadCenter();
+			}
+		}
+	});
+}

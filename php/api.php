@@ -84,23 +84,31 @@ elseif($_GET['type'] == 'usercenter')
 	{
 		$sql="SELECT * FROM hdd_user WHERE id='$uid'";
 		$result=@mysql_query($sql) or die;//(mysql_error());
-		$row=mysql_fetch_array($result);
-		$content=array(
-			'user' => $row['user'],
-			'name' => $row['name'],
-			'sign' => $row['sign'],
-			'avatat' => $row['avatar'],
-			'email' => $row['email'],
-			'verify' => $row['verify'],
-			'reg_ip' => $row['reg_ip'],
-			'time' => $row['time']
-		);
-		$err='0';
+		if(!mysql_num_rows($result))
+		{
+			$err='2';
+			$content='用户不存在';
+		}else{
+			$row=mysql_fetch_array($result);
+			$content=array(
+				'user' => $row['user'],
+				'name' => $row['name'],
+				'sign' => $row['sign'],
+				'avatat' => $row['avatar'],
+				'email' => $row['email'],
+				'verify' => $row['verify'],
+				'reg_ip' => $row['reg_ip'],
+				'time' => $row['time']
+			);
+			$err='0';
+		}
 	}else{
 		$err='1';
 		$content='请先登陆';
 	}
-}else{
+}
+else
+{
 	$content = urlencode('信息不全');
 	$err = '1';
 }

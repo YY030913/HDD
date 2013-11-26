@@ -46,7 +46,7 @@ if(strpos($_SERVER['HTTP_REFERER'],'www.benbentime.com'))
 		<div class="info">
 			<div class="name">
 				<p id="name">未登录</p>
-				<p id="sign" style="font-size:15px;">预览版，纯观赏，功能无效。。。</p>
+				<p id="sign" style="font-size:15px;"></p>
 			</div>
 			<div class="avatar">
 				<div class="avatar_mask"></div>

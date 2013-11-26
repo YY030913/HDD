@@ -379,6 +379,7 @@ html,body
 	width: 420px;
 	height: auto;
 	padding: 0;
+	text-align: center;
 	margin-top: 20px;
 }
 .optionContent input
@@ -395,7 +396,6 @@ html,body
 .optionContent button
 {
 	font-family: '方正兰亭黑简体常规',Microsoft Yahei, STheiti, WenQuanYi Micro Hei, helvetica, arial, sans-serif;
-	width: 100px;
 	height: 40px;
 	padding: 0;
 	border-radius: 10px;
@@ -421,6 +421,7 @@ html,body
 }
 .reset
 {
+	width: 100px;
 	background: #606060;
 	position: relative;
 	left: 90px;
@@ -428,17 +429,29 @@ html,body
 .register,
 .login
 {
+	width: 100px;
 	background: #2e8bcc;
 	position: relative;
 	left: 150px;
 }
 .logout
 {
+	width: 100px;
 	background: #606060;
 	position: relative;
-	left: 50%;
-	margin-left: -50px;
-	top: 60px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.normal
+{
+	width: 180px;
+	background: #2e8bcc;
+	position: relative;
+	margin-top: 20px;
+}
+.disabled
+{
+	background: #606060;
 }
 #pageLogin
 {	
