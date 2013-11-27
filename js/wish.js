@@ -55,7 +55,7 @@
 			_self.addClass('wish').addClass('s'+_s);
 			_self.hover(
 				function(){
-					_self.css({'z-index':'9999'}).children('.close').show().bind('click',function(){_self.css('opacity','0')});
+					_self.css({'z-index':'997'}).children('.close').show().bind('click',function(){_self.css('opacity','0')});
 				},
 				function(){
 					_self.css({'z-index':'','border':'none'}).children('.close').hide();

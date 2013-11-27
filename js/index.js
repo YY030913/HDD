@@ -130,7 +130,7 @@ function order(id)
 	var timeArr=new Array('','1-2节','3-4节','午休','5-6节','7-8节','9-10节','IN');
 	var weekArr=new Array('','星期一','星期二','星期三','星期四','星期五','星期六','星期日');
 	var roomArr=new Array('','书屋','会议室');
-	$('.order').html('<h3>您将要预定的是</h3><p>'+weekArr[week]+' '+timeArr[time]+' 的'+roomArr[room]+'</p><p>请务必注明专业年级姓名以及详细用途</p><input id="content" type="text" placeholder="请输入详情" /></p><p><span><input id="vcode" type="text" placeholder="请输入验证码" /><img id="code_img" src="./php/vcode.php" alt="看不清，请点击刷新" title="看不清，请点击刷新" /></span><p><button id="submit">提交</button><button id="cancle">取消</button></p>');
+	$('.order').html('<h3>您将要预定的是</h3><p>'+weekArr[week]+' '+timeArr[time]+' 的'+roomArr[room]+'</p><p>请务必注明专业年级姓名以及详细用途</p><input id="content" type="text" placeholder="请输入详情" /></p><p><span><input id="vcode" type="text" placeholder="请输入验证码" /><img id="code_img" src="./php/vcode.php" alt="看不清，请点击刷新" title="看不清，请点击刷新" /></span></p><p><button id="submit">提交</button><button id="cancle">取消</button></p>');
 	$('input').placeholder();
 	$('#code_img').click(function(){
 		var append = '?' + new Date().getTime() + 'a' + Math.random();
@@ -277,9 +277,45 @@ function center(){
 }
 
 function message(){
-	$('.content').html('<div id="wish"><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div></div>');
+	$('.content').html('<div class="write"></div><div id="wish"><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div></div>');
 	$('#wish').wish();
 	$('.wish').draggable({containment: "#wish", scroll: false});
+	$('.write').mouseover(function(){
+		$(this).css('opacity','1');
+	});
+	$('.write').mouseleave(function(){
+		$(this).css('opacity','0.55');
+	});
+	$('.write').click(function(){
+		addmessage();
+	});
+
+}
+
+function addmessage(){
+	if($('#name').html() == '未登录'){
+		layer.alert('请先登录', 8);
+		center();
+	}else{
+		var i = $.layer({
+			type: 1,
+			title: false,
+			closeBtn : [0 , true],
+			border : [5, 0.5, '#666', true],
+			move: ['.juanmove', true],
+			area: ['auto','auto'],
+			page: {
+				html: '<div class="leavemsg"><p><textarea placeholder="你想说些什么？不要超过50字哦！" id="message"></textarea></p><p><span><input id="vcode" type="text" placeholder="请输入验证码" /><img id="code_img" src="./php/vcode.php" alt="看不清，请点击刷新" title="看不清，请点击刷新" /></span><button id="sendmsg">提交</button></p></div>'
+			}
+		});
+		$('#sendmsg').click(function(){
+			sendmsg();
+		});
+	}
+}
+
+function sendmsg(){
+	layer.alert('开发中', 8);
 }
 
 function testScreen(){
