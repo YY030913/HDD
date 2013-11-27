@@ -24,6 +24,7 @@ header("Content-Type: text/html; charset=UTF-8");
 		<a href="#classroom" data-role="button" id="btnClassroom" data-transition="slide">办公室借用情况</a>
 		<a href="#order" data-role="button" id="btnOrder" data-transition="slide">办公室网上预定</a>
 		<a href="#extend" data-role="button" id="btnExtend" data-transition="slide">拓展服务</a>
+		<a href="http://hs.itjesse.cn/?force=1" data-role="button"data-transition="slide">查看电脑版</a>
 	</div>
 	<footer data-role="footer" data-position="fixed"><h1>©2013 ITJesse</h1></footer>
 </section>

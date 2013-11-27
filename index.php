@@ -15,7 +15,12 @@ $row=mysql_fetch_array($result);
 	<link rel="stylesheet" href="css/index.css">
 
 	<script src="js/uaredirect.js"></script>
-	<script type="text/javascript">uaredirect("http://hs.itjesse.cn/mobile");</script>
+<?php
+if(!$_GET['force'])
+{
+	echo '<script type="text/javascript">uaredirect("http://hs.itjesse.cn/mobile");</script>';
+}
+?>
 	<script src="js/jquery/jquery-1.9.1.min.js"></script>
 	<script src="js/html5placeholder.jquery.js"></script>
 	<script src="js/layer.min.js"></script>
