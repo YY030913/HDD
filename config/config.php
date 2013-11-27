@@ -7,7 +7,7 @@ $_dbname="hdd_is_sb";
 $_charset="utf8";
 
 //访问频率限制，单位秒
-$_keep=2;
+$_keep=1;
 $_alert='<p>别刷了，省省吧。。</p><p>我是绝对不会告诉你数据库的密码是hdd_is_sb的！</p><p><span style="display:none;">信了你就输了~</span></p>';
 
 //数据库连接参数，不要动！（debug 请把注释去掉）
@@ -26,6 +26,8 @@ if(mysql_num_rows($_result))
 	$_now=time();
 	if($_now-$_time<$_keep)
 	{
+		$_sql="UPDATE hdd_ip_log SET time=NOW()+3 WHERE ip='$client_ip'";
+		@mysql_query($_sql) or die;
 		echo $_alert;
 		exit;
 	}else{

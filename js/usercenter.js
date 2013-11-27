@@ -110,7 +110,7 @@ function logout(){
 				window.location.reload(); 
 			}
 		});
-	}, 2000);
+	}, 1000);
 	$('#logout').attr('disabled',false);
 	$('#logout').removeClass('disabled');
 }
@@ -165,7 +165,7 @@ function loadCenter(){
 				layer.alert(warning, 8);
 			}
 		});
-	}, 2000);
+	}, 1000);
 }
 
 function sendmail(){
