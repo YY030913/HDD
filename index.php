@@ -26,7 +26,7 @@ $row=mysql_fetch_array($result);
 <?php
 if(strpos($_SERVER['HTTP_REFERER'],'www.benbentime.com'))
 {
-	echo '<script>var key=1;</script>';
+	//echo '<script>var key=1;</script>';
 }
 ?>
 	
