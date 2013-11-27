@@ -47,9 +47,11 @@ html,body
 	position: fixed;
 	bottom: 0;
 	left: 6%;
-	width: 20%;
+	width: 280px;
+	text-indent: 50px;
 	height: 75%;
 	background-color: #F0F0F0;
+	z-index: 1000;
 }
 .menu ul
 {
@@ -89,9 +91,9 @@ html,body
 .content
 {
 	float: left;
-	width: 54%;
+	width: 900px;
 	position: fixed;
-	right: 14%;
+	right: 4%;
 	top: 25%;
 	height: 70%;
 	line-height: 30px;
@@ -128,9 +130,9 @@ html,body
 .footer
 {
 	float: left;
-	width: 55%;
+	width: 900px;
 	position: fixed;
-	right: 14%;
+	right: 4%;
 	bottom: 0;
 	height: 5%;
 	overflow: hidden;
@@ -562,3 +564,5 @@ input
 	}
 ::-webkit-resizer {
 	}
+
+

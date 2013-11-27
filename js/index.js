@@ -3,13 +3,10 @@
 function callBack(){
 	var navHeight = $('.nav-bar').height();
 	var navWidth = $('.nav-bar').width();
-	var menuWidth = $('.menu').width();
-	var menuHeight = $('li').height();
 	var footerHeight = $('.footer').height();
 	$('.nav-bar').css("line-height", navHeight+'px');
 	$('.nav-bar').css("font-size", navHeight*0.3+'px');
 	$('.nav-bar').css("text-indent", navWidth*0.1+'px');
-	$('.menu').css("text-indent", menuWidth*0.18+'px');
 	$('.footer').css("line-height", footerHeight+'px');
 	$('.footer').css("font-size", footerHeight*0.45+'px');
 	$('.version').css("font-size", navHeight*0.12+'px');
@@ -260,7 +257,7 @@ function submitUpdate(){
 				layer.alert(warning, 8);
 			}
 		});
-	},2000);
+	},1000);
 }
 
 function extend(){
@@ -279,15 +276,39 @@ function center(){
 	}
 }
 
+function message(){
+	$('.content').html('<div id="wish"><div>1. text</div><div>2. text</div></div>');
+	$('.wish').draggable({containment: "#wish", scroll: false});
+	$('#wish').wish();
+}
+
 function testScreen(){
 	if(screen.width < 1024){
-		layer.alert('您的屏幕分辨率太小，网页可能无法正常显示。</br>（推荐分辨率1024x768以上）', 8);
+		layer.alert('您的屏幕分辨率太小，网页可能无法正常显示。</br>（推荐分辨率1280x720以上）', 8);
 	}else{
+		if(document.body.offsetWidth < 1200){
+			slidemenu();
+		}else{
+			fixedmenu();
+		}
 		if(document.body.offsetWidth < 1020){
 			layer.alert('您的浏览器没有最大化吗？</br>当浏览器窗口宽度小于1024时网页可能无法正常显示哦！', 8);
 		}
 	}
 }
 
+function slidemenu(){
+	$('.menu').animate({left:"-220px"},400);
+	$('.menu').find('ul').mouseover(function(){
+		$('.menu').animate({left:"0"},400);
+	});
+	$('.menu').find('ul').mouseleave(function(){
+		$('.menu').animate({left:"-220px"},400);
+	});
+}
 
+function fixedmenu(){
+	$('.menu').animate({left:"6%"},400);
+	$('.menu').find('ul').unbind();
+}
 
