@@ -97,7 +97,8 @@ html,body
 	top: 25%;
 	height: 70%;
 	line-height: 30px;
-	overflow:auto;
+	overflow-y:auto;
+	overflow-x:hidden;
 	text-align: center;
 }
 .content *
@@ -564,5 +565,40 @@ input
 	}
 ::-webkit-resizer {
 	}
+
+#wish {
+ width: 800px;
+ height: 2000px;
+ margin: 0;
+ padding: 40px;
+ position: relative;
+}
+.wish {
+ width: 160px;height: 80px;color: black;padding:20px 20px 30px 20px;
+}
+.wish p {
+ white-space: normal;
+}
+.wish .close {
+ display:block;position:absolute;top:-5px;left:-5px;background:url(../images/close.png);width:20px;height: 20px;display: none;cursor: pointer
+} 
+
+.title {
+width:140px;height:40px;color:#FFF;font-size:20px;line-height:40px;position:absolute;top:-20px;left:30px;opacity:0.55;  filter:alpha(opacity=55);background:#000;
+}
+
+/*随机选择的便签背景*/ 
+
+.s1 { float:left; background:#F4B300; box-shadow:0px 0px 30px #000; -webkit-transform: rotate(6deg) translateZ(0);  }
+.s2 { float:left; background:#AA40FF; box-shadow:0px 0px 30px #000; -webkit-transform: rotate(-5deg) translateZ(0);  }
+.s3 { float:left; background:#E0E0E0; box-shadow:0px 0px 30px #000; -webkit-transform: rotate(15deg) translateZ(0);  }
+.s4 { float:left; background:#00D8CC; box-shadow:0px 0px 30px #000; -webkit-transform: rotate(-8deg) translateZ(0);  }
+.s5 { float:left; background:#00C13F; box-shadow:0px 0px 30px #000; -webkit-transform: rotate(-10deg) translateZ(0);  }
+.s6 { float:left; background:#00A4A4; box-shadow:0px 0px 30px #000; -webkit-transform: rotate(14deg) translateZ(0);  }
+.s7 { float:left; background:#00A4A4; box-shadow:0px 0px 30px #000; -webkit-transform: rotate(12deg) translateZ(0);  }
+.s8 { float:left; background:#FF881D; box-shadow:0px 0px 30px #000; -webkit-transform: rotate(0deg) translateZ(0);  }
+.s9 { float:left; background:#AA40FF; box-shadow:0px 0px 30px #000; -webkit-transform: rotate(-3deg) translateZ(0);  }
+.s10 { float:left; background:#FF7D23; box-shadow:0px 0px 30px #000; -webkit-transform: rotate(8deg) translateZ(0);  }
+
 
 

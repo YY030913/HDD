@@ -13,6 +13,8 @@ $row=mysql_fetch_array($result);
 	<title>计算机学院学工办</title>
 
 	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="js/iealert/style.css">
+	<link rel="stylesheet" type="text/css" href="css/jquery.ui.all.css" />
 
 	<script src="js/uaredirect.js"></script>
 <?php
@@ -22,11 +24,13 @@ if(!$_GET['force'])
 }
 ?>
 	<script src="js/jquery/jquery-1.9.1.min.js"></script>
+	<script src="js/jquery/jquery.ui.core.min.js"></script>
+	<script src="js/jquery/jquery.ui.widget.min.js"></script>
+	<script src="js/jquery/jquery.ui.mouse.js"></script>
+	<script src="js/jquery/jquery.ui.draggable.js"></script>
 	<script src="js/html5placeholder.jquery.js"></script>
 	<script src="js/layer.min.js"></script>
 	<script src="js/iealert.min.js"></script>
-	
-	<link rel="stylesheet" href="js/iealert/style.css">
 
 <?php
 if(strpos($_SERVER['HTTP_REFERER'],'www.benbentime.com'))
@@ -34,7 +38,7 @@ if(strpos($_SERVER['HTTP_REFERER'],'www.benbentime.com'))
 	//echo '<script>var key=1;</script>';
 }
 ?>
-	
+	<script src="js/wish.js"></script>
 	<script src="js/anti_piracy.js"></script>
 	<script src="js/onload.js"></script>
 	<script src="js/index.js"></script>
@@ -85,6 +89,7 @@ if(strpos($_SERVER['HTTP_REFERER'],'www.benbentime.com'))
 			<li><a class="list" rel="onduty" href="#" onclick="dutyUpdate();">值班人员</a></li>
 			<li><a class="list" rel="teacher" href="#" onclick="teaUpdate();">老师去向</a></li>
 			<li><a class="list" rel="order" href="#" onclick="classUpdate();">办公室网上预定</a></li>
+			<li><a class="list" rel="message" href="#" onclick="message();">留言墙</a></li>
 			<li><a class="list" rel="extend" href="#" onclick="extend();">拓展服务</a></li>
 		</ul>
 	</div>

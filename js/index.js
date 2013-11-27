@@ -277,9 +277,9 @@ function center(){
 }
 
 function message(){
-	$('.content').html('<div id="wish"><div>1. text</div><div>2. text</div></div>');
-	$('.wish').draggable({containment: "#wish", scroll: false});
+	$('.content').html('<div id="wish"><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div></div>');
 	$('#wish').wish();
+	$('.wish').draggable({containment: "#wish", scroll: false});
 }
 
 function testScreen(){
