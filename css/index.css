@@ -656,7 +656,9 @@ input
 .wish .close {
  display:block;position:absolute;top:-5px;left:-5px;background:url(../images/close.png);width:20px;height: 20px;display: none;cursor: pointer
 } 
-
+.wish .close:hover{
+ background:url(../images/close.png);
+}
 .title {
 width:140px;height:40px;color:#FFF;font-size:20px;line-height:40px;position:absolute;top:-20px;left:30px;opacity:0.55;  filter:alpha(opacity=55);background:#000;
 }
