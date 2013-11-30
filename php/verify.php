@@ -27,6 +27,7 @@ if(!mysql_num_rows($result))
 		$sql="UPDATE hdd_user SET verify='1' WHERE id='$uid'";
 		@mysql_query($sql) or die;//(mysql_error());
 		echo '<script>alert("验证成功！请回到主页并刷新页面。");</script>';
+		$_SESSION['emailverify']=1;
 		$deadline=date("Y-m-d H:i:s",time()-60*60);
 		$sql="DELETE FROM hdd_email_verify WHERE uid='$uid' OR time < '$deadline'";
 		@mysql_query($sql) or die;//(mysql_error());

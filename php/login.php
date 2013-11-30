@@ -26,6 +26,8 @@ if(mysql_num_rows($result))
 	if($row['pass'] == $pass)
 	{
 		$_SESSION['uid']=$row['id'];
+		$_SESSION['emailverify']=$row['emailverify'];
+		$_SESSION['accountverify']=$row['accountverify'];
 		echo 1;
 	}else{
 		echo "密码错误！";

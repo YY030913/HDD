@@ -29,10 +29,21 @@ elseif($_GET['type'] == 'classroom')
 	$result=@mysql_query($sql) or die;//(mysql_error());
 	while($row=mysql_fetch_array($result))
 	{
+		$uid=$row['uid'];
+		$sql="SELECT * FROM hdd_user_info WHERE uid='$uid'";
+		$result2=@mysql_query($sql) or die;//(mysql_error());
+		if(mysql_num_rows($result2))
+		{
+			$row2=mysql_fetch_array($result2);
+			$class=$row2['class'];
+			$name=$row2['name'];
+		}
 		$content[]=array(
 			'week' => $row['week'],
 			'time' => $row['time'],
 			'room' => $row['room'],
+			'name' => urlencode($name),
+			'class1' => urlencode($class),
 			'content' => urlencode($row['content']),
 		);
 	}
@@ -53,28 +64,47 @@ elseif($_GET['type'] == 'onduty')
 elseif($_GET['type'] == 'order' && $_GET['week'] && $_GET['time'] && $_GET['room'] && $_GET['content'] && $_GET['vcode'])
 {
 	$vcode=$_GET['vcode'];
-	if($_SESSION['code'] && $vcode == $_SESSION['code'])
+	if(!$_SESSION['code'] || $vcode != $_SESSION['code'])
 	{
-		$week=mysql_real_escape_string($_GET['week']);
-		$time=mysql_real_escape_string($_GET['time']);
-		$room=mysql_real_escape_string($_GET['room']);
-		$_content=$_GET['content'];
-		$sql="SELECT * FROM hdd_classroom WHERE week='$week' AND time='$time' AND room='$room'";
-		$result=@mysql_query($sql) or die;//(mysql_error());
-		$num=mysql_num_rows($result);
-		if(!$num)
-		{
-			$sql="INSERT INTO hdd_classroom (week, time, room, content) VALUES ('$week', '$time', '$room', '$_content')";
-			@mysql_query($sql) or die;//(mysql_error());
-			$err=0;
-			$content='添加成功！';
-		}else{
-			$err=2;
-			$content= '添加时间冲突了~是不是被别人抢先了呢？';
-		}
-	}else{
 		$err=3;
 		$content= '验证码错误！';
+	}
+	else if(!$_SESSION['uid'])
+	{
+		$err=4;
+		$content= '请登录后操作！';
+	}
+	else if(!$_SESSION['accountverify'])
+	{
+		$err=5;
+		$content= '请绑定学号后操作！';
+	}else{
+		$uid=$_SESSION['uid'];
+		$sql="SELECT * FROM hdd_user_info WHERE uid='$uid'";
+		$result=@mysql_query($sql) or die;
+		if(mysql_num_rows($result))
+		{
+			$week=mysql_real_escape_string($_GET['week']);
+			$time=mysql_real_escape_string($_GET['time']);
+			$room=mysql_real_escape_string($_GET['room']);
+			$_content=$_GET['content'];
+			$sql="SELECT * FROM hdd_classroom WHERE week='$week' AND time='$time' AND room='$room'";
+			$result=@mysql_query($sql) or die;//(mysql_error());
+			$num=mysql_num_rows($result);
+			if(!$num)
+			{
+				$sql="INSERT INTO hdd_classroom (uid, week, time, room, content) VALUES ('$uid', '$week', '$time', '$room', '$_content')";
+				@mysql_query($sql) or die;//(mysql_error());
+				$err=0;
+				$content='添加成功！';
+			}else{
+				$err=2;
+				$content= '添加时间冲突了~是不是被别人抢先了呢？';
+			}
+		}else{
+			$err=5;
+			$content= '请绑定学号后操作！';
+		}
 	}
 }
 elseif($_GET['type'] == 'usercenter')
@@ -90,13 +120,20 @@ elseif($_GET['type'] == 'usercenter')
 			$content='用户不存在';
 		}else{
 			$row=mysql_fetch_array($result);
+			if($row['accountverify'] == 1)
+			{
+				$sql="SELECT * FROM hdd_user_info WHERE uid='$uid'";
+				$result=@mysql_query($sql) or die;//(mysql_error());
+				$row2=mysql_fetch_array($result);
+			}
 			$content=array(
 				'user' => $row['user'],
-				'name' => $row['name'],
+				'name' => $row2['name'],
 				'sign' => $row['sign'],
 				'avatat' => $row['avatar'],
 				'email' => $row['email'],
-				'verify' => $row['verify'],
+				'emailverify' => $row['emailverify'],
+				'accountverify' => $row['accountverify'],
 				'reg_ip' => $row['reg_ip'],
 				'time' => $row['time']
 			);

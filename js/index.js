@@ -90,7 +90,7 @@ function classUpdate(){
 			if(data.content){
 				$.each(data.content,function(i,item){
 					$('td[id='+item.week+item.time+']').find('div[id='+item.room+']').addClass('red');
-					$('td[id='+item.week+item.time+']').find('span[id='+item.room+']').append(item.content);
+					$('td[id='+item.week+item.time+']').find('span[id='+item.room+']').append('<p>'+item.name+' '+item.class1+'</p><p>'+item.content+'</p>');
 				});
 			}
 			$(".red").mousemove(function(e){
@@ -122,35 +122,41 @@ function classUpdate(){
 
 function order(id)
 {
-	var array = id.split("");
-	var week = array[0];
-	var time = array[1];
-	var room = array[2];
-	
-	var timeArr=new Array('','1-2节','3-4节','午休','5-6节','7-8节','9-10节','IN');
-	var weekArr=new Array('','星期一','星期二','星期三','星期四','星期五','星期六','星期日');
-	var roomArr=new Array('','书屋','会议室');
-	$('.order').html('<h3>您将要预定的是</h3><p>'+weekArr[week]+' '+timeArr[time]+' 的'+roomArr[room]+'</p><p>请务必注明专业年级姓名以及详细用途</p><input id="content" type="text" placeholder="请输入详情" /></p><p><span><input id="vcode" type="text" placeholder="请输入验证码" /><img id="code_img" src="./php/vcode.php" alt="看不清，请点击刷新" title="看不清，请点击刷新" /></span></p><p><button id="submit">提交</button><button id="cancle">取消</button></p>');
-	$('input').placeholder();
-	$('#code_img').click(function(){
-		var append = '?' + new Date().getTime() + 'a' + Math.random();
-		$(this).attr('src',$('#code_img').attr('src') + append);
-	});
-	var i=$.layer({
-		shade : [0.5, '#000', true],
-		closeBtn : [0, false],
-		type : 1,
-		area : ['auto', 'auto'],
-		title : false,
-		border : [10, 0.6, '#000', true],
-		page : {dom : '.order'},
-	});
-	$('#cancle').on('click',function(){
-		layer.close(i);
-	});
-	$('#submit').on('click',function(){
-		submit(week+time+room+i);
-	});
+	if($('#name').html() == '未登录'){
+		layer.alert('请先登录', 8);
+		center();
+	}else{
+		checkbind('account');
+		var array = id.split("");
+		var week = array[0];
+		var time = array[1];
+		var room = array[2];
+		
+		var timeArr=new Array('','1-2节','3-4节','午休','5-6节','7-8节','9-10节','IN');
+		var weekArr=new Array('','星期一','星期二','星期三','星期四','星期五','星期六','星期日');
+		var roomArr=new Array('','书屋','会议室');
+		$('.order').html('<h3>您将要预定的是</h3><p>'+weekArr[week]+' '+timeArr[time]+' 的'+roomArr[room]+'</p><p>请务必注明专业年级姓名以及详细用途</p><input id="content" type="text" placeholder="请输入详情" /></p><p><span><input id="vcode" type="text" placeholder="请输入验证码" /><img id="code_img" src="./php/vcode.php" alt="看不清，请点击刷新" title="看不清，请点击刷新" /></span></p><p><button id="submit">提交</button><button id="cancle">取消</button></p>');
+		$('input').placeholder();
+		$('#code_img').click(function(){
+			var append = '?' + new Date().getTime() + 'a' + Math.random();
+			$(this).attr('src',$('#code_img').attr('src') + append);
+		});
+		var i=$.layer({
+			shade : [0.5, '#000', true],
+			closeBtn : [0, false],
+			type : 1,
+			area : ['auto', 'auto'],
+			title : false,
+			border : [10, 0.6, '#000', true],
+			page : {dom : '.order'},
+		});
+		$('#cancle').on('click',function(){
+			layer.close(i);
+		});
+		$('#submit').on('click',function(){
+			submit(week+time+room+i);
+		});
+	}
 }
 
 function submit(id){
@@ -178,25 +184,19 @@ function submit(id){
 						dialog : {msg:data.content,type : 1}	
 					});
 					submitUpdate();
-				}else if(data.error == '1'){               //信息不全
+				}
+				else if(data.error == '3'){              //验证码错误
 					$.layer({
 						area : ['auto','auto'],
 						dialog : {msg:data.content,type : 8}	
 					});
 					var append = '?' + new Date().getTime() + 'a' + Math.random();
 					$('#code_img').attr('src',$('#code_img').attr('src') + append);
-				}else if(data.error == '2'){                //时间冲突
+				}else{             
 					$.layer({
 						area : ['auto','auto'],
 						dialog : {msg:data.content,type : 8}	
 					});
-				}else if(data.error == '3'){              //验证码错误
-					$.layer({
-						area : ['auto','auto'],
-						dialog : {msg:data.content,type : 8}	
-					});
-					var append = '?' + new Date().getTime() + 'a' + Math.random();
-					$('#code_img').attr('src',$('#code_img').attr('src') + append);
 				}
 			},
 			error: function(){
@@ -215,7 +215,7 @@ function submit(id){
 function submitUpdate(){
 	$("[class=half],[class=halfright]").unbind('mouseover');
 	$("[class=half],[class=halfright]").unbind('mouseleave');
-	setTimeout(function(){
+	//setTimeout(function(){
 		var load=layer.load(0);
 		$.ajax({
 			url: './php/api.php',
@@ -228,7 +228,7 @@ function submitUpdate(){
 						$('td[id='+item.week+item.time+']').find('div[id='+item.room+']').addClass('red');
 						var content = $('td[id='+item.week+item.time+']').find('span[id='+item.room+']').html();
 						if(!content){
-							$('td[id='+item.week+item.time+']').find('span[id='+item.room+']').append(item.content);
+							$('td[id='+item.week+item.time+']').find('span[id='+item.room+']').append('<p>'+item.name+' '+item.class1+'</p><p>'+item.content+'</p>');
 						}
 					});
 				}
@@ -257,7 +257,7 @@ function submitUpdate(){
 				layer.alert(warning, 8);
 			}
 		});
-	},1000);
+	//},1000);
 }
 
 function extend(){
@@ -308,6 +308,7 @@ function addmessage(){
 				html: '<div class="leavemsg"><p><textarea placeholder="你想说些什么？不要超过50字哦！" id="message"></textarea></p><p><span><input id="vcode" type="text" placeholder="请输入验证码" /><img id="code_img" src="./php/vcode.php" alt="看不清，请点击刷新" title="看不清，请点击刷新" /></span><button id="sendmsg">提交</button></p></div>'
 			}
 		});
+		$('input').placeholder();
 		$('#sendmsg').click(function(){
 			sendmsg();
 		});

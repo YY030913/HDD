@@ -6,38 +6,11 @@ $_pass="zyb940708";
 $_dbname="hdd_is_sb";
 $_charset="utf8";
 
-//访问频率限制，单位秒
-$_keep=1;
-$_alert='<p>别刷了，省省吧。。</p><p>我是绝对不会告诉你数据库的密码是hdd_is_sb的！</p><p><span style="display:none;">信了你就输了~</span></p>';
-
 //数据库连接参数，不要动！（debug 请把注释去掉）
 $_conn=mysql_connect($_ip,$_user,$_pass);// or die('不能连接服务器'.mysql_error());  
 mysql_select_db("$_dbname",$_conn);// or die("数据库访问错误".mysql_error());  
 mysql_query("SET NAMES ".$_charset);// or die("数据库查询错误".mysql_error());
 
-//访问频率限制
-$client_ip=getIP();
-$_sql="SELECT * FROM hdd_ip_log WHERE ip='$client_ip'";
-$_result=@mysql_query($_sql) or die;
-if(mysql_num_rows($_result))
-{
-	$_row=mysql_fetch_array($_result);
-	$_time=strtotime($_row['time']);
-	$_now=time();
-	if($_now-$_time<$_keep)
-	{
-		$_sql="UPDATE hdd_ip_log SET time=NOW()+3 WHERE ip='$client_ip'";
-		@mysql_query($_sql) or die;
-		echo $_alert;
-		exit;
-	}else{
-		$_sql="UPDATE hdd_ip_log SET time=NOW() WHERE ip='$client_ip'";
-		@mysql_query($_sql) or die;
-	}
-}else{
-	$_sql="INSERT INTO hdd_ip_log (ip, time) VALUES ('$client_ip', NOW())";
-	@mysql_query($_sql) or die;
-}
 
 //公共函数区
 

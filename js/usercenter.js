@@ -116,7 +116,7 @@ function logout(){
 }
 
 function loadCenter(){
-	setTimeout(function(){
+	//setTimeout(function(){
 		var load=layer.load(0);
 		$.ajax({
 			url: './php/api.php',
@@ -142,16 +142,22 @@ function loadCenter(){
 					$('#name').html(name);
 					$('#sign').html(sign);
 					$('.options').html('');
-					if(data.content.verify == '0'){
-						$('.optionContent').html('<h3 style="margin-top:50px;">你必须先验证邮箱和教务平台账号</h3><p><button class="normal" id="sendmail">发送验证邮件</button></p><p><button class="normal" id="bindaccount">绑定教务平台账号</button></p><p><button class="logout" id="logout">退出登陆</button></p>');
+					if(data.content.emailverify == '0'){
+						var button1='<button class="normal" id="sendmail">发送验证邮件</button>';
 					}else{
-						$('.optionContent').html('<h3 style="margin-top:50px;">你必须先验证邮箱和教务平台账号</h3><p><button class="normal disabled" id="sendmail">邮箱已验证</button></p><p><button class="normal" id="bindaccount">绑定教务平台账号</button></p><p><button class="logout" id="logout">退出登陆</button></p>');
+						var button1='<button class="normal disabled" id="sendmail" disabled>邮箱已验证</button>';
 					}
+					if(data.content.accountverify == '0'){
+						var button2='<button class="normal" id="bindaccount">绑定教务平台账号</button>';
+					}else{
+						var button2='<button class="normal disabled" id="bindaccount" disabled>教务平台已绑定</button>';
+					}
+					$('.optionContent').html('<h3 style="margin-top:50px;">你必须先验证邮箱和教务平台账号</h3><p>'+button1+'</p><p>'+button2+'</p><p><button class="logout" id="logout">退出登陆</button></p>');
 					$("#sendmail").click(function(){
 						sendmail();
 					});
 					$("#bindaccount").click(function(){
-						layer.alert('功能开发中。。。', 8);
+						bindaccount();
 					});
 					$("#logout").click(function(){
 						logout();
@@ -165,7 +171,7 @@ function loadCenter(){
 				layer.alert(warning, 8);
 			}
 		});
-	}, 1000);
+	//}, 1000);
 }
 
 function sendmail(){
@@ -199,7 +205,81 @@ function sendmail(){
 	});	
 }
 				
+function bindaccount(){
+	var i = $.layer({
+		type: 1,
+		title: false,
+		closeBtn: false,
+		border : [5, 0.5, '#666', true],
+		area: ['252px','auto'],
+		page: {
+			html: '<div class="bindaccount"><p><input type="text" id="account" placeholder="请输入学号"></p><p><input type="password" id="pass" placeholder="请输入密码"></p><p><button id="btnBind">提交</button><button id="cancle">取消</button></p></div>'
+		}
+	});
+	$('input').placeholder();
+	$('#btnBind').click(function(){
+		bindsubmit(i);
+	});
+	$('#cancle').click(function(){
+		layer.close(i);
+	});
+}
 
+function bindsubmit(index){
+	var account=$('#account').val();
+	var pass=$('#pass').val();
+	if(account.length != 10){
+		layer.alert('请输入正确的学号', 8);
+	}
+	else if(!pass){
+		layer.alert('请输入密码', 8);
+	}else{
+		var load=layer.load(0);
+		$.ajax({
+			url: './php/hbut_curl_api.php',
+			data: '&user='+account+'&pass='+pass,
+			dataType: 'json',
+			success: function(data){
+				layer.close(load);
+				if(data.error == '0'){
+					layer.close(index);
+					$.layer({
+						area : ['auto','auto'],
+						time : 2,
+						closeBtn: false,
+						title : false,
+						dialog : {msg:data.text, type : 1}	
+					});
+					loadCenter();
+				}
+				else if(data.error == '2'){
+					layer.alert('教务处服务器繁忙，请重试。。。', 8);
+				}else{
+					layer.alert(data.text, 8);
+				}
+			},
+			error: function(){
+				layer.close(load);
+				layer.alert(warning, 8);
+			}
+		});	
+	}
+}
+
+function checkbind(type){
+	$.ajax({
+		url: './php/checkbind.php',
+		data: '&type='+type,
+		type: 'GET',
+		success: function(data){
+			if(data == '0'){
+				layer.alert('请先绑定学号', 8);
+				center();
+			}
+		}
+	});
+}
+	
 function checklogin(){
 	$.ajax({
 		url: './php/checklogin.php',
