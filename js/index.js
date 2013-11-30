@@ -345,7 +345,7 @@ function slidemenu(){
 }
 
 function fixedmenu(){
-	$('.menu').animate({left:"6%"},400);
+	$('.menu').animate({left:"4%"},400);
 	$('.menu').find('ul').unbind();
 }
 
