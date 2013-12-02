@@ -190,6 +190,9 @@ function submit(id){
 						area : ['auto','auto'],
 						dialog : {msg:data.content,type : 8}	
 					});
+					$('#cancle').on('click',function(){
+						layer.close(i);
+					});
 					var append = '?' + new Date().getTime() + 'a' + Math.random();
 					$('#code_img').attr('src',$('#code_img').attr('src') + append);
 				}else{             
