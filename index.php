@@ -109,5 +109,6 @@ if(strpos($_SERVER['HTTP_REFERER'],'www.benbentime.com'))
 	</div>
 	<div class="order"></div>
 	<div class="footer"><p><a href="http://www.itjesse.cn/">Copyright&nbsp;&nbsp;&nbsp;&nbsp;ITJesse & Hs</a></div>
+	<?php require '/weichuncai/sm-weichuncai.php'; ?>
 </body>
 </html>
