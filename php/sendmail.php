@@ -53,7 +53,7 @@ $content .= '<p>这是你的邮箱验证链接，链接有效期为1小时。</p
 $content .= '<p>直接点击即可验证邮箱。如果无法点击，请尝试复制到地址栏访问。</p>';
 $content .= '<p><a href="http://hs.itjesse.cn/php/verify.php?uid='.$uid.'&code='.$code.'">http://hs.itjesse.cn/php/verify.php?uid='.$uid.'&code='.$code.'</a></p>';
 $content .= '<hr>';
-$content .= '<p>本邮件为系统自动发送，请不要回复本邮件。联系我请发送邮件到jesse@itjesse.cn</p>';
+$content .= '<p>本邮件为系统自动发送，请不要回复本邮件。联系我请发送邮件到 jesse@itjesse.cn</p>';
 
 
 
