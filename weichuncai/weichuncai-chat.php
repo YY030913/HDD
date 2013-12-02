@@ -19,25 +19,40 @@
             $ran=rand(1,5);
             switch($ran){
                 case 1:
-                    return "小鸡鸡今天累了，明天再陪你聊天吧。";
+                    return "我才不要和你聊天呢！";
                     break;
                 case 2:
-                    return "小鸡鸡睡觉喽~~";
+                    return "睡觉喽~~";
                     break;
                 case 3:
                     return "呼呼~~呼呼~~";
                     break;
                 case 4:
-                    return "你话好多啊，不跟你聊了";
-                    break;
-                case 5:
-                    return "感谢您关注【卓锦苏州】"."\n"."微信号：zhuojinsz"."\n"."卓越锦绣，万代不朽";
+                    return "大话痨，人家不理你了。";
                     break;
                 default:
-                    return "感谢您关注【卓锦苏州】"."\n"."微信号：zhuojinsz"."\n"."卓越锦绣，万代不朽";
+                    return "主人叫我呢，我先走一步~";
                     break;
             }
         }
     }
-	echo xiaojo($_GET['key']);
+	
+	function filter($content)
+	{
+		$keyword=array(
+			'nmlgb',
+			'金华',
+			'订单',
+			'宝贝'
+		);
+		foreach($keyword as $value)
+		{
+			if(preg_match('/'.$value.'/',$content))
+				return '......？';
+			else
+				return $content;
+		}
+	}
+	
+	echo filter(xiaojo($_GET['key']));
 ?>
