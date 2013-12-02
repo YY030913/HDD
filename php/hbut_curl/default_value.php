@@ -1,0 +1,9 @@
+<?php
+$tmpdir="./tmp/";
+$reg='/(?<=ASP.NET_SessionId=)\S{24}/';
+$reg2="/(\d+)\.(\d+)/is";
+$baseurl="http://run.hbut.edu.cn";
+$rand=time().rand(10,99);
+$jpg=$tmpdir.$rand.".jpg";
+$cookie='D:\www\tmp\\'.$rand.'.cookie';
+?>
