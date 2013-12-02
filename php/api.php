@@ -128,8 +128,8 @@ elseif($_GET['type'] == 'usercenter')
 			}
 			$content=array(
 				'user' => $row['user'],
-				'name' => $row2['name'],
-				'sign' => $row['sign'],
+				'name' => urlencode($row2['name']),
+				'sign' => urlencode($row2['class']),
 				'avatat' => $row['avatar'],
 				'email' => $row['email'],
 				'emailverify' => $row['emailverify'],
@@ -142,6 +142,23 @@ elseif($_GET['type'] == 'usercenter')
 	}else{
 		$err='1';
 		$content='请先登陆';
+	}
+}
+elseif($_GET['type'] == 'msgwall')
+{
+	$sql="SELECT * FROM hdd_msg_wall ORDER BY time DESC";
+	$result=@mysql_query($sql) or die;//(mysql_error());
+	while($row=mysql_fetch_array($result))
+	{
+		$uid=$row['uid'];
+		$sql="SELECT * FROM hdd_user_info WHERE uid='$uid'";
+		$result2=@mysql_query($sql) or die;//(mysql_error());
+		$row2=mysql_fetch_array($result2);
+		$content[]=array(
+			'content' => urlencode($row['content']),
+			'name' => urlencode($row2['name']),
+			'time' => $row['time']
+		);
 	}
 }
 else

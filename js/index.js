@@ -277,7 +277,21 @@ function center(){
 }
 
 function message(){
-	$('.content').html('<div class="write"></div><div id="wish"><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div><div><span class="title">Title</span>1. text</div></div>');
+	$('.content').html('<div class="write"></div><div id="wish"></div>');
+	$.ajax({
+		url: './php/api.php',
+		data: '&type=msgwall',
+		dataType: 'json',
+		success: function(data){
+			$.each(data.content,function(i,item){
+				$('#wish').append('<div><span class="title">'+item.name+'</span>'+item.content+'</div>');
+			});
+		},
+		error: function(){
+			layer.close(load);
+			layer.alert(warning, 8);
+		}
+	});
 	$('#wish').wish();
 	$('.wish').draggable({containment: "#wish", scroll: false});
 	$('.write').mouseover(function(){
@@ -289,7 +303,6 @@ function message(){
 	$('.write').click(function(){
 		addmessage();
 	});
-
 }
 
 function addmessage(){
