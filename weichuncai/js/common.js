@@ -379,11 +379,10 @@ function stoptime(){
 }
 var talktime = 0;
 //设置自言自语频率（单位：秒）
-var talkself = 60;
+var talkself = 40;
 var talkobj;
 var tsi = 0;
 var talkself_arr = [
-	["白日依山尽，黄河入海流，欲穷千里目，更上.....一层楼？", "1"],
 	["我看见主人熊猫眼又加重了！", "3"],
 	["我是不是很厉害呀～～？", "2"],
 	["5555...昨天有个小孩子跟我抢棒棒糖吃.....", "3"],
