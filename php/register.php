@@ -22,9 +22,9 @@ if(!check_email_address($_POST['email']))
 	echo "邮箱显然不对吧，你蒙我呢！";
 	exit;
 }
-$user=$_POST['user'];
+$user=mysql_real_escape_string(stripslashes($_POST['user']));
 $pass=md5($_POST['pass']);
-$email=$_POST['email'];
+$email=mysql_real_escape_string(stripslashes($_POST['email']));
 $sql="SELECT * FROM hdd_user WHERE user='$user' OR email='$email'";
 $result=@mysql_query($sql) or die;
 if(!mysql_num_rows($result))

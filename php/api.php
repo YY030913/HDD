@@ -84,9 +84,9 @@ elseif($_GET['type'] == 'order' && $_GET['week'] && $_GET['time'] && $_GET['room
 		$result=@mysql_query($sql) or die;
 		if(mysql_num_rows($result))
 		{
-			$week=mysql_real_escape_string($_GET['week']);
-			$time=mysql_real_escape_string($_GET['time']);
-			$room=mysql_real_escape_string($_GET['room']);
+			$week=mysql_real_escape_string(stripslashes($_GET['week']));
+			$time=mysql_real_escape_string(stripslashes($_GET['time']));
+			$room=mysql_real_escape_string(stripslashes($_GET['room']));
 			$_content=$_GET['content'];
 			$sql="SELECT * FROM hdd_classroom WHERE week='$week' AND time='$time' AND room='$room'";
 			$result=@mysql_query($sql) or die;//(mysql_error());
@@ -161,8 +161,33 @@ elseif($_GET['type'] == 'msgwall')
 		);
 	}
 }
-else
+elseif($_GET['type'] == 'sendmsg')
 {
+	if(!$_SESSION['uid'])
+	{
+		$err='1';
+		$content="请先登录";
+	}
+	else if(!$_SESSION['accountverify'])
+	{
+		$err='2';
+		$content="请绑定学号后操作";
+	}
+	else if($_POST['vcode'] != $_SESSION['code'])
+	{
+		$err='3';
+		$content="验证码错误";
+		unset($_SESSION['code']);
+	}else{
+		$uid=$_SESSION['uid'];
+		$message=mysql_real_escape_string(stripslashes($_POST['message']));
+		$sql="INSERT INTO hdd_msg_wall (uid, content, time) VALUES ('$uid', '$message', NOW())";
+		@mysql_query($sql) or die;//(mysql_error());
+		unset($_SESSION['code']);
+		$err='0';
+		$content='留言成功！';
+	}
+}else{
 	$content = urlencode('信息不全');
 	$err = '1';
 }

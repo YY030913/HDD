@@ -1,15 +1,11 @@
-body
-{
-	margin: 20px;
-	line-height: 30px;
+.container{
+	float: left;
+	margin-top:80px;
+	margin-left:40px;
 }
 button
 {
 	padding: 5px;
-}
-table
-{
-	margin-top: 10px;
 }
 .select
 {
@@ -31,7 +27,7 @@ table
 {
 	width:400px;
 	height:300px;
-	position:absolute;
+	position:relative;
 	top:70px;
 	left:100px;
 }

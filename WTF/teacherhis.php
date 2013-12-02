@@ -27,6 +27,7 @@ require_once "./config/config.php";
 	
 </head>
 <body>
+<div class="container">
 <h2>查看老师历史状态</h2>
 <?php
 $sql="SELECT * FROM hdd_teachers";
@@ -64,5 +65,6 @@ if(!$num)
 <p><a href="../index.php">回到主页</a></p>
 <p><a href="./index.php">回到后台主页</a></p>
 <div class="select" style="display:none;"></div>
+</div>
 </body>
 </html>

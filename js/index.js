@@ -280,23 +280,25 @@ function center(){
 }
 
 function message(){
+	var load=layer.load(0);
 	$('.content').html('<div class="write"></div><div id="wish"></div>');
 	$.ajax({
 		url: './php/api.php',
 		data: '&type=msgwall',
 		dataType: 'json',
 		success: function(data){
+			layer.close(load);
 			$.each(data.content,function(i,item){
 				$('#wish').append('<div><span class="title">'+item.name+'</span>'+item.content+'</div>');
 			});
+			$('#wish').wish();
+			$('.wish').draggable({containment: "#wish", scroll: false});
 		},
 		error: function(){
 			layer.close(load);
 			layer.alert(warning, 8);
 		}
 	});
-	$('#wish').wish();
-	$('.wish').draggable({containment: "#wish", scroll: false});
 	$('.write').mouseover(function(){
 		$(this).css('opacity','1');
 	});
@@ -313,6 +315,7 @@ function addmessage(){
 		layer.alert('请先登录', 8);
 		center();
 	}else{
+		checkbind('account');
 		var i = $.layer({
 			type: 1,
 			title: false,
@@ -321,18 +324,89 @@ function addmessage(){
 			move: ['.juanmove', true],
 			area: ['auto','auto'],
 			page: {
-				html: '<div class="leavemsg"><p><textarea placeholder="你想说些什么？不要超过50字哦！" id="message"></textarea></p><p><span><input id="vcode" type="text" placeholder="请输入验证码" /><img id="code_img" src="./php/vcode.php" alt="看不清，请点击刷新" title="看不清，请点击刷新" /></span><button id="sendmsg">提交</button></p></div>'
+				html: '<div class="leavemsg"><p><textarea placeholder="你想说些什么？不要超过50字哦！" id="message"></textarea></p><p><span><input id="vcode1" type="text" placeholder="请输入验证码" /><img id="vcode_img" src="./php/vcode.php" alt="看不清，请点击刷新" title="看不清，请点击刷新" /></span><button id="sendmsg">提交</button></p></div>'
 			}
 		});
 		$('input').placeholder();
+		$('#vcode_img').click(function(){
+			var append = '?' + new Date().getTime() + 'a' + Math.random();
+			$(this).attr('src',$('#vcode_img').attr('src') + append);
+		});
 		$('#sendmsg').click(function(){
-			sendmsg();
+			sendmsg(i);
 		});
 	}
 }
 
-function sendmsg(){
-	layer.alert('开发中', 8);
+function sendmsg(index){
+	var vcode=$('#vcode1').val();
+	var message=$('#message').val();
+	if(!vcode){
+		layer.alert('请输入验证码', 8);
+	}else if(!message){
+		layer.alert('请输入你想说的话', 8);
+	}else if(message.length < 5){
+		layer.alert('至少要说5个字哦', 8);
+	}else if(message.length >50){
+		layer.alert('最多只能写50个字哦', 8);
+	}else{
+		var load=layer.load(0);
+		$.ajax({
+			url: './php/api.php?type=sendmsg',
+			method: 'POST',
+			dataType: 'JSON',
+			data: '&message='+message+'&vcode='+vcode,
+			success: function(data){
+				layer.close(load);
+				if(data.error == 0){
+					layer.close(index);
+					layer.alert(data.content, 1);
+					updateMessage()
+				}else if(data.error == 3){
+					layer.alert(data.content, 8);
+					var append = '?' + new Date().getTime() + 'a' + Math.random();
+					$('#vcode_img').attr('src',$('#vcode_img').attr('src') + append);
+				}else{
+					layer.alert(data.content, 8);
+				}
+			},
+			error: function(){
+				layer.close(load);
+				layer.alert(warning, 8);
+			}
+		});
+	}	
+}
+
+function updateMessage(){
+	var load=layer.load(0);
+	$('.content').html('<div class="write"></div><div id="wish"></div>');
+	$.ajax({
+		url: './php/api.php',
+		data: '&type=msgwall',
+		dataType: 'json',
+		success: function(data){
+			layer.close(load);
+			$.each(data.content,function(i,item){
+				$('#wish').append('<div><span class="title">'+item.name+'</span>'+item.content+'</div>');
+			});
+			$('#wish').wish();
+			$('.wish').draggable({containment: "#wish", scroll: false});
+		},
+		error: function(){
+			layer.close(load);
+			layer.alert(warning, 8);
+		}
+	});
+	$('.write').mouseover(function(){
+		$(this).css('opacity','1');
+	});
+	$('.write').mouseleave(function(){
+		$(this).css('opacity','0.55');
+	});
+	$('.write').click(function(){
+		addmessage();
+	});
 }
 
 function testScreen(){

@@ -693,7 +693,7 @@ input
  position: relative;
 }
 .wish {
- width: 160px;height: 80px;color: black;padding:20px 20px 30px 20px;
+ width: 160px;height: 80px;color: black;padding:20px 20px 30px 20px;line-height: 20px;
 }
 .wish p {
  white-space: normal;

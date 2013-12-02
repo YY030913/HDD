@@ -16,7 +16,7 @@ if(strlen($_POST['pass']) < 6)
 	echo "你的密码太短了，至少6位数呢！";
 	exit;
 }
-$user=$_POST['user'];
+$user=mysql_real_escape_string(stripslashes($_POST['user']));
 $pass=md5($_POST['pass']);
 $sql="SELECT * FROM hdd_user WHERE user='$user'";
 $result=@mysql_query($sql) or die;

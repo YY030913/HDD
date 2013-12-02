@@ -5,7 +5,13 @@ session_start();
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
+	<link rel="stylesheet" href="./css/index.css" />
+	<script src="../js/jquery/jquery-1.9.1.min.js"></script>
+	<script src="./js/index.js"></script>
+	
 	<title>计算机学院学工办——后台首页</title>
+	
 </head>
 <body>
 <?php
@@ -28,15 +34,26 @@ if((isset($_POST['password']) && $_POST['password'] == $_password) || isset($_SE
 {
 	$_SESSION['login'] = '1';
 ?>
-<h2>后台首页</h2>
-<p><a href="./manteacher.php">添加/删除老师</a></p>
-<p><a href="./teastatus.php">修改老师状态</a></p>
-<p><a href="./classstatus.php">修改办公室状态</a></p>
-<p><a href="./onduty.php">值班人员管理</a></p>
-<p><a href="./teacherhis.php">老师历史状态</a></p>
+<div class="menu">
+	<p><a id="manteacher" href="#">添加/删除老师</a></p>
+	<p><a id="teastatus" href="#">修改老师状态</a></p>
+	<p><a id="classstatus" href="#">修改办公室状态</a></p>
+	<p><a id="onduty" href="#">值班人员管理</a></p>
+	<p><a id="teacherhis" href="#">老师历史状态</a></p>
+	<hr>
+	<p><a id="manuser" href="#">用户管理</a></p>
+	<hr>
+	<p><a id="index" href="../index.php">回到主页</a></p>
+</div>
+<div class="content">
+<iframe width="100%" height="100%" id="content" scrolling="yes" frameborder="1" marginheight="80px" marginwidth="40px"></iframe>
+</div>
+<?php
+}else{
+?>
+<p><a href="../index.php">回到主页</a></p>
 <?php
 }
 ?>
-<p><a href="../index.php">回到主页</a></p>
 </body>
 </html>
