@@ -43,8 +43,20 @@
 			'nmlgb',
 			'金华',
 			'订单',
-			'宝贝'
+			'宝贝',
+			'小黄'
 		);
+		$str1=array(
+			'请说问题',
+			'请说回答',
+			'我学会了，不信你试试！'
+		);
+		$str2=array(
+			'不要问我奇怪的问题哦！',
+			'这么奇怪的问题我到底应该怎么回答？',
+			'这么简单你不教我也会嘛！不信你试试！'
+		);
+		$content=str_replace($str1,$str2,$content);
 		foreach($keyword as $value)
 		{
 			if(preg_match('/'.$value.'/',$content))
