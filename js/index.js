@@ -135,7 +135,7 @@ function order(id)
 		var timeArr=new Array('','1-2节','3-4节','午休','5-6节','7-8节','9-10节','IN');
 		var weekArr=new Array('','星期一','星期二','星期三','星期四','星期五','星期六','星期日');
 		var roomArr=new Array('','书屋','会议室');
-		$('.order').html('<h3>您将要预定的是</h3><p>'+weekArr[week]+' '+timeArr[time]+' 的'+roomArr[room]+'</p><p>请务必注明专业年级姓名以及详细用途</p><input id="content" type="text" placeholder="请输入详情" /></p><p><span><input id="vcode" type="text" placeholder="请输入验证码" /><img id="code_img" src="./php/vcode.php" alt="看不清，请点击刷新" title="看不清，请点击刷新" /></span></p><p><button id="submit">提交</button><button id="cancle">取消</button></p>');
+		$('.order').html('<h3>您将要预定的是</h3><p>'+weekArr[week]+' '+timeArr[time]+' 的'+roomArr[room]+'</p><p>请注明借用部门及详细用途</p><input id="content" type="text" placeholder="请输入详情" /></p><p><span><input id="vcode" type="text" placeholder="请输入验证码" /><img id="code_img" src="./php/vcode.php" alt="看不清，请点击刷新" title="看不清，请点击刷新" /></span></p><p><button id="submit">提交</button><button id="cancle">取消</button></p>');
 		$('input').placeholder();
 		$('#code_img').click(function(){
 			var append = '?' + new Date().getTime() + 'a' + Math.random();
@@ -264,7 +264,7 @@ function submitUpdate(){
 }
 
 function extend(){
-	$('.content').html('<h1><a href="http://pan.baidu.com/s/169G9e">湖工大查分客户端V2.1.1下载</a></h1><h2><a href="http://blog.sina.com.cn/u/2450629767">学工助理博客</a></h2><h2><a href="http://www.benbentime.com">计算机学院工作网</a></h2><h2><a href="http://blog.sina.com.cn/hbut2013">13级年级博客</a></h2><h2><a href="http://blog.sina.com.cn/u/2449956125">12级年级博客</a></h2><h2><a href="http://blog.sina.com.cn/u/2449939115">11级年级博客</a></h2><h2><a href="http://blog.sina.com.cn/u/2450656273">10级年级博客</a></h2>');
+	$('.content').html('<h1><a href="http://pan.baidu.com/s/1krdzp">湖工大查分客户端V2.2.1下载</a></h1><h2><a href="http://blog.sina.com.cn/u/2450629767">学工助理博客</a></h2><h2><a href="http://www.benbentime.com">计算机学院工作网</a></h2><h2><a href="http://blog.sina.com.cn/hbut2013">13级年级博客</a></h2><h2><a href="http://blog.sina.com.cn/u/2449956125">12级年级博客</a></h2><h2><a href="http://blog.sina.com.cn/u/2449939115">11级年级博客</a></h2><h2><a href="http://blog.sina.com.cn/u/2450656273">10级年级博客</a></h2>');
 }
 
 function center(){
