@@ -53,7 +53,5 @@ if(!$num)
 }
 ?>
 </table>
-<p><a href="../index.php">回到主页</a></p>
-<p><a href="./index.php">回到后台主页</a></p>
 </body>
 </html>
