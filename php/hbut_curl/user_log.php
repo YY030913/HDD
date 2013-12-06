@@ -1,4 +1,5 @@
 <?php
+mysql_select_db("hbutlog",$_conn);
 if(!preg_match('/^\d+$/',$user))
 {
 	exit;
