@@ -14,7 +14,7 @@ $result=@mysql_query($sql) or die;//(mysql_error());
 $num=mysql_num_rows($result);
 if(!$num)
 {
-	$sql="INSERT INTO hdd_classroom (week, time, room, content) VALUES ('$week', '$time', '$room', '$content')";
+	$sql="INSERT INTO hdd_classroom (uid, week, time, room, content) VALUES ('26', '$week', '$time', '$room', '$content')";
 	@mysql_query($sql) or die(mysql_error());
 	echo '<script>alert("添加成功！");history.go(-1);</script>';
 }else{
