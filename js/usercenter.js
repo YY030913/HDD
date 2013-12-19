@@ -132,7 +132,7 @@ function loadCenter(){
 						var name = data.content.user;
 					}
 					if(data.content.sign != null){
-						var sign = data.content.name;
+						var sign = data.content.sign;
 					}else{
 						var sign = '无签名';
 					}
