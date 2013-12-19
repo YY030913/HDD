@@ -62,5 +62,7 @@ function getIP()
 	return $ip;
 }
 
+getIP();
+
 
 ?>
