@@ -1,4 +1,5 @@
 window.onload = function(){
+	addScriptTag("http://pm25.itjesse.cn/pm25_ajax.php?callback=updateAQI&city=wuhan");
 	testScreen();
 	checklogin();
 	$(window).resize(function() {

@@ -56,7 +56,13 @@ if(strpos($_SERVER['HTTP_REFERER'],'www.benbentime.com'))
 		<div class="info">
 			<div class="name">
 				<p id="name">未登录</p>
-				<p id="sign" style="font-size:15px;"></p>
+				<p id="sign" style="font-size:20px;"></p>
+			</div>
+			<div class="weather">
+				<p>空气污染指数</p>
+				<p style="font-size:15px;"><span id="aqi"></span><span id="quality"></span></p>
+				<p>主要污染物</p>
+				<p id="primary_pollutant" style="font-size:15px;"></p>
 			</div>
 			<div class="avatar">
 				<div class="avatar_mask"></div>

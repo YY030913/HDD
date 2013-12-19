@@ -1,5 +1,12 @@
 ﻿var warning='访问过快导致时空出现异常，数据丢失在了次元空间裂缝之中。。。预计3秒后恢复正常。'
 
+function addScriptTag(src){
+	var script = document.createElement('script');
+	script.setAttribute("type","text/javascript");
+	script.src = src;
+	document.body.appendChild(script);
+}
+
 function callBack(){
 	var navHeight = $('.nav-bar').height();
 	var navWidth = $('.nav-bar').width();
@@ -10,6 +17,18 @@ function callBack(){
 	$('.footer').css("line-height", footerHeight+'px');
 	$('.footer').css("font-size", footerHeight*0.45+'px');
 	$('.version').css("font-size", navHeight*0.12+'px');
+}
+
+function updateAQI(data){
+	if(data.error == null){
+		$('#aqi').html(data.aqi);
+		$('#quality').html('（'+data.quality+'）');
+		$('#primary_pollutant').html(data.primary_pollutant);
+	}else{
+		$('#aqi').html('0');
+		$('#quality').html('无数据');
+		$('#primary_pollutant').html('无数据');
+	}
 }
 
 function dutyUpdate(){
