@@ -394,6 +394,7 @@ html,body
 .optionContent
 {
 	width: 420px;
+	overflow: hidden;
 	height: auto;
 	padding: 0;
 	text-align: center;
@@ -403,7 +404,7 @@ html,body
 {
 	width: 240px;
 	padding: 8px;
-	margin-left: 90px;
+	margin: auto;
 	border-radius: 5px;
 	text-align: center;
 	border: 1px solid rgb(178, 178, 178); 
@@ -549,7 +550,6 @@ input,textarea,button
 	width: 100px;
 	background: #606060;
 	position: relative;
-	margin-left: 90px;
 }
 .register,
 .login
@@ -578,14 +578,20 @@ input,textarea,button
 {
 	background: #606060;
 }
-#pageLogin
-{	
+.page
+{
 	float: left;
+	width: 420px;
+	margin: 0;
+	padding: 0;
 	position: absolute;
-	top: 500px;
+	transition: all 0.6s ease-in-out;
+	background: none;
+}
+#pageLogin,
+#pageBind
+{	
 	left: 0px;
-	transition:all 0.6s ease-in-out;
-	background: #FFF;
 }
 #pageLogin  button
 {
@@ -596,14 +602,10 @@ input,textarea,button
 {
 	margin-top:50px;
 }
-#pageReg
+#pageReg,
+#pageCenter
 {	
-	float: left;
-	position: absolute;
-	top: 500px;
 	left: 420px;
-	transition:all 0.6s ease-in-out;
-	background: #FFF;
 }
 #pageReg  button
 {
@@ -614,6 +616,116 @@ input,textarea,button
 {
 	margin-top: 20px;
 }
+#pageCenter ul
+{
+	padding: 0;
+	width: 300px;
+	margin: 20px auto;
+	border-top: 1px solid rgb(221, 221, 221);
+	border-left: 1px solid rgb(221, 221, 221);
+	border-right: 1px solid rgb(221, 221, 221);
+	list-style: none;
+}
+#pageCenter ul li
+{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 50px;
+	text-align: left;
+	text-indent: 40px;
+	border-bottom: 1px solid rgb(221, 221, 221);
+	line-height: 50px;
+}
+#pageCenter ul li:hover
+{
+	background: #EEEEEE;
+}
+#pageCenter a
+{
+	text-decoration: none;
+	color: #666;
+}
+.uploadAvatar
+{
+	height: 0px !important;
+	border-bottom: none !important;
+	overflow: hidden;
+}
+.uploadAvatar-show
+{
+	height: 120px !important;
+	border-bottom: 1px solid rgb(221, 221, 221);
+	overflow: hidden;
+}
+.uploadList
+{
+	width: 260px;
+	height: 90px;
+	margin: 20px auto;
+	padding: 0;
+	border: 1px solid rgb(221, 221, 221);
+}
+.oldAvatarDiv
+{
+	float: left;
+	width: 90px;
+	height: 90px;
+	margin: 0;
+	padding: 0;
+	border-right: 1px solid rgb(221, 221, 221);
+}
+.oldAvatar
+{
+	width: 80px;
+	height: 80px;
+	margin: 5px;
+	border-radius: 80px;
+	overflow: hidden;
+	box-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+	background-image: url('../images/noimg.jpg');
+	background-size: 80px 80px;
+	z-index: 8;
+}
+.oldAvatar_mask
+{
+	width: 80px;
+	height: 80px;
+	background-image: url('../images/mask.png');
+	background-size: 80px 80px;
+	z-index: 7;
+}
+.uploadDiv
+{
+	float: left;
+	width: 160px;
+	height: 90px;
+	overflow: hidden;
+}
+#uploadBtn
+{
+	float: left;
+	margin: 20px 15px;
+	color: #FFF;
+	border-radius: 5px;
+	text-align: left;
+	background: #128023;
+}
+#uploadBtn:active
+{
+	background: #000;
+}
+.extSt
+{
+	background: url('../images/extSt.png') no-repeat scroll;
+	width: 16px;
+	height: 16px;
+	display: block;
+	float: right;
+	margin-right: 17px;
+	margin-top: 17px;
+}
+
 .write
 {
 	width: 100px;

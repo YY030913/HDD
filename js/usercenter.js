@@ -9,6 +9,46 @@ function switcher(rel){
 		$('#pageLogin').css('left','0px');
 		$('#pageReg').css('left','420px');
 	}
+	if(rel == 'bindaccount'){
+		$('#pageBind').css('left','0px');
+		$('#pageCenter').css('left','420px');
+	}
+	if(rel == 'usercenter'){
+		$('#pageCenter').css('left','0px');
+		$('#pageBind').css('left','420px');
+	}
+}
+
+function updateAQI(data){
+	if(data.error == null){
+		$('#aqi').html(data.aqi);
+		$('#quality').html('（'+data.quality+'）');
+		$('#primary_pollutant').html(data.primary_pollutant);
+	}else{
+		$('#aqi').html('0');
+		$('#quality').html('无数据');
+		$('#primary_pollutant').html('无数据');
+	}
+}
+
+function updateAvatar(){
+	var load=layer.load(0);
+	$.ajax({
+		url: './php/api.php',
+		data: '&type=usercenter',
+		dataType: 'json',
+		success: function(data){
+			layer.close(load);
+			if(data.content.avatar != '0'){
+				$('.avatar').find('img').attr('src', './uploads/'+data.content.avatar);
+				$('.oldAvatar').css('background-image', 'url("./uploads/'+data.content.avatar+'")');
+			}
+		},
+		error: function(){
+			layer.close(load);
+			layer.alert(warning, 8);
+		}
+	});
 }
 
 function register(){
@@ -137,30 +177,35 @@ function loadCenter(){
 						var sign = '无签名';
 					}
 					if(data.content.avatar != '0'){
-						var avatar = data.content.avatar;
+						$('.avatar').find('img').attr('src', './uploads/'+data.content.avatar);
+						$('.oldAvatar').css('background-image', 'url("./uploads/'+data.content.avatar+'")');
 					}
 					$('#name').html(name);
 					$('#sign').html(sign);
-					$('.options').html('');
-					if(data.content.emailverify == '0'){
-						var button1='<button class="normal" id="sendmail">发送验证邮件</button>';
-					}else{
-						var button1='<button class="normal disabled" id="sendmail" disabled>邮箱已验证</button>';
-					}
-					if(data.content.accountverify == '0'){
-						var button2='<button class="normal" id="bindaccount">绑定教务平台账号</button>';
-					}else{
-						var button2='<button class="normal disabled" id="bindaccount" disabled>教务平台已绑定</button>';
-					}
-					$('.optionContent').html('<h3 style="margin-top:50px;">你必须先验证邮箱和教务平台账号</h3><p>'+button1+'</p><p>'+button2+'</p><p><button class="logout" id="logout">退出登陆</button></p>');
-					$("#sendmail").click(function(){
-						sendmail();
-					});
-					$("#bindaccount").click(function(){
-						bindaccount();
-					});
-					$("#logout").click(function(){
-						logout();
+					$('#centerContent').load('./ajax/uc_success.html',function(){
+						$("#sendmail").click(function(){
+							sendmail();
+						});
+						$("#bindaccount").click(function(){
+							bindaccount();
+						});
+						$("#logout").click(function(){
+							logout();
+						});
+						$(".optionsBtn").click(function(){
+							var rel=$(this).attr('rel');
+							switcher(rel);
+						});
+						if(data.content.emailverify != '0'){
+							$('#sendmail').attr('disabled','disabled');
+							$('#sendmail').addClass('disabled');
+							$('#sendmail').html('邮箱已验证');
+						}
+						if(data.content.accountverify != '0'){
+							$('#bindaccount').attr('disabled','disabled');
+							$('#bindaccount').addClass('disabled');
+							$('#bindaccount').html('教务平台已绑定');
+						}
 					});
 				}else{
 					layer.alert(data.content, 8);

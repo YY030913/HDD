@@ -19,18 +19,6 @@ function callBack(){
 	$('.version').css("font-size", navHeight*0.12+'px');
 }
 
-function updateAQI(data){
-	if(data.error == null){
-		$('#aqi').html(data.aqi);
-		$('#quality').html('（'+data.quality+'）');
-		$('#primary_pollutant').html(data.primary_pollutant);
-	}else{
-		$('#aqi').html('0');
-		$('#quality').html('无数据');
-		$('#primary_pollutant').html('无数据');
-	}
-}
-
 function dutyUpdate(){
 	var load=layer.load(0);
 	$.ajax({

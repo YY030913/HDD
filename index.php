@@ -15,8 +15,8 @@ $row=mysql_fetch_array($result);
 
 	<link rel="stylesheet" href="css/index.css">
 	<link rel="stylesheet" href="js/iealert/style.css">
-	<link rel="stylesheet" type="text/css" href="css/jquery.ui.all.css" />
-
+	<link rel="stylesheet" href="css/jquery.ui.all.css" />
+	
 	<script src="js/uaredirect.js"></script>
 <?php
 if(!$_GET['force'])
@@ -25,6 +25,7 @@ if(!$_GET['force'])
 }
 ?>
 	<script src="js/jquery/jquery-1.9.1.min.js"></script>
+	<script src="js/jquery/jquery.md5.js"></script>
 	<script src="js/jquery/jquery.ui.core.min.js"></script>
 	<script src="js/jquery/jquery.ui.widget.min.js"></script>
 	<script src="js/jquery/jquery.ui.mouse.js"></script>
@@ -32,6 +33,8 @@ if(!$_GET['force'])
 	<script src="js/html5placeholder.jquery.js"></script>
 	<script src="js/layer.min.js"></script>
 	<script src="js/iealert.min.js"></script>
+	<script src="js/jquery.uploadify.min.js" type="text/javascript"></script>
+
 
 <?php
 if(strpos($_SERVER['HTTP_REFERER'],'www.benbentime.com'))
@@ -69,24 +72,26 @@ if(strpos($_SERVER['HTTP_REFERER'],'www.benbentime.com'))
 				<img src="./images/noimg.jpg"></img>
 			</div>
 		</div>
-		<div class="options">
-			<ul>
-				<li><a href="#" class="optionsBtn selected" rel="login">登陆</a></li>
-				<li><a href="#" class="optionsBtn" rel="register">注册</a></li>
-			</ul>
-		</div>
-		<div class="optionContent">
-			<div id="pageLogin">
-				<p><input type="text" id="logUsername" placeholder="请输入用户名" /></p>
-				<p><input type="password" id="logPassword" placeholder="请输入密码" /></p>
-				<p><button id="reset" class="reset">重置</button><button id="login" class="login">登陆</button></p>
+		<div id="centerContent">
+			<div class="options">
+				<ul>
+					<li><a href="#" class="optionsBtn selected" rel="login">登陆</a></li>
+					<li><a href="#" class="optionsBtn" rel="register">注册</a></li>
+				</ul>
 			</div>
-			<div id="pageReg">
-				<p><input type="text" id="regUsername" placeholder="请输入用户名" /></p>
-				<p><input type="password" id="regPassword" placeholder="请输入密码" /></p>
-				<p><input type="password" id="regPassword_repeat" placeholder="请再次输入密码" /></p>
-				<p><input type="text" id="regEmail" placeholder="请输入邮箱" /></p>
-				<p><button id="reset" class="reset">重置</button><button id="register" class="register">注册</button></p>
+			<div class="optionContent">
+				<div class="page" id="pageLogin">
+					<p><input type="text" id="logUsername" placeholder="请输入用户名" /></p>
+					<p><input type="password" id="logPassword" placeholder="请输入密码" /></p>
+					<p><button id="reset" class="reset">重置</button><button id="login" class="login">登陆</button></p>
+				</div>
+				<div class="page" id="pageReg">
+					<p><input type="text" id="regUsername" placeholder="请输入用户名" /></p>
+					<p><input type="password" id="regPassword" placeholder="请输入密码" /></p>
+					<p><input type="password" id="regPassword_repeat" placeholder="请再次输入密码" /></p>
+					<p><input type="text" id="regEmail" placeholder="请输入邮箱" /></p>
+					<p><button id="reset" class="reset">重置</button><button id="register" class="register">注册</button></p>
+				</div>
 			</div>
 		</div>
 	</div>

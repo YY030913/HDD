@@ -1,0 +1,72 @@
+<div class="options">
+	<ul>
+		<li><a href="#" class="optionsBtn selected" rel="bindaccount">账号绑定</a></li>
+		<li><a href="#" class="optionsBtn" rel="usercenter">个人中心</a></li>
+	</ul>
+</div>
+<div class="optionContent">
+	<div class="page" id="pageBind">
+		<h3 style="margin-top:50px;">你必须先验证邮箱和教务平台账号</h3>
+		<p><button class="normal" id="sendmail">发送验证邮件</button></p>
+		<p><button class="normal" id="bindaccount">绑定教务平台账号</button></p>
+	</div>
+	<div class="page" id="pageCenter">
+		<ul>
+			<a href="#"><li>上传头像<div class="extSt"></div></li></a>
+			<li class="uploadAvatar-show">
+				<div class="uploadList">
+					<div class="oldAvatarDiv">
+						<div class="oldAvatar">
+							<div class="oldAvatar_mask"></div>
+						</div>
+					</div>
+					<div class="uploadDiv">
+						<input id="uploadBtn" name="file_upload" type="file" multiple="false">
+					</div>
+					<script>
+						var timestamp = (new Date()).valueOf();
+						$(function() {
+							$("#uploadBtn").uploadify({
+								formData      : {
+									timestamp : timestamp,
+									token     : $.md5('unique_salt'+timestamp)
+								},
+								height        : 50,
+								swf           : '/hdd/uploadify/uploadify.swf',
+								uploader      : '/hdd/uploadify/uploadify.php',
+								width         : 140,
+								buttonText    : '选择图片',
+								onUploadStart : function() {
+									var load=layer.load(0);
+								},
+								onUploadSuccess : function(file, data, response) {
+									layer.closeAll();
+									if(data == '1'){
+										$.layer({
+											area : ['auto','auto'],
+											time : 2,
+											closeBtn: false,
+											title : false,
+											dialog : {msg: '上传成功！', type : 1}	
+										});
+										updateAvatar();
+									}else{
+										layer.alert(data, 8);
+									}
+								},
+								onUploadError : function(errorMsg) {
+									layer.closeAll();
+									layer.alert(errorMsg, 8);
+								}
+							});
+						});
+					</script>
+				</div>
+			</li>
+			<a href="#"><li>个人信息<div class="extSt"></div></li></a>
+			<a href="#"><li>消息中心<div class="extSt"></div></li></a>
+			<a href="#"><li>退出登录<div class="extSt"></div></li></a>
+		</ul>
+		</br>
+	</div>
+</div>

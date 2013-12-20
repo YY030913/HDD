@@ -130,7 +130,7 @@ elseif($_GET['type'] == 'usercenter')
 				'user' => $row['user'],
 				'name' => urlencode($row2['name']),
 				'sign' => urlencode($row2['class']),
-				'avatat' => $row['avatar'],
+				'avatar' => $row['avatar'],
 				'email' => $row['email'],
 				'emailverify' => $row['emailverify'],
 				'accountverify' => $row['accountverify'],
