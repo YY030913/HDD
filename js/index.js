@@ -434,10 +434,10 @@ function testScreen(){
 function slidemenu(){
 	$('.menu').animate({left:"-220px"},400);
 	$('.menu').find('ul').mouseover(function(){
-		$('.menu').animate({left:"0"},400);
+		$('.menu').stop(true,false).animate({left:"0"},400);
 	});
 	$('.menu').find('ul').mouseleave(function(){
-		$('.menu').animate({left:"-220px"},400);
+		$('.menu').stop(true,false).animate({left:"-220px"},400);
 	});
 }
 

@@ -31,6 +31,20 @@ function updateAQI(data){
 	}
 }
 
+function showmenu(rel){
+	var list=$('[class='+rel+'],[class='+rel+'-show]');
+	var arrow=$('[rel='+rel+']').find('.extSt');
+	if(list.attr('class') == rel){
+		list.removeClass(rel);
+		list.addClass(rel+'-show');
+		arrow.addClass('down');
+	}else{
+		list.removeClass(rel+'-show');
+		list.addClass(rel);
+		arrow.removeClass('down');
+	}
+}
+
 function updateAvatar(){
 	var load=layer.load(0);
 	$.ajax({
@@ -183,6 +197,7 @@ function loadCenter(){
 					$('#name').html(name);
 					$('#sign').html(sign);
 					$('#centerContent').load('./ajax/uc_success.html',function(){
+						updateAvatar();
 						$("#sendmail").click(function(){
 							sendmail();
 						});
@@ -195,6 +210,9 @@ function loadCenter(){
 						$(".optionsBtn").click(function(){
 							var rel=$(this).attr('rel');
 							switcher(rel);
+						});
+						$('.centerlist').click(function(){
+							showmenu($(this).attr('rel'));
 						});
 						if(data.content.emailverify != '0'){
 							$('#sendmail').attr('disabled','disabled');
