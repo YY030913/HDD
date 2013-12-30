@@ -9,10 +9,11 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 session_start();
 require_once "../config/config.php";
 if(!$_SESSION['uid']){
+	echo '请先登录';
 	exit;
 }
 $uid=$_SESSION['uid'];
-$targetFolder = '/hdd/uploads'; // Relative to the root
+$targetFolder = '../uploads'; // Relative to the root
 
 $verifyToken = md5('unique_salt' . $_POST['timestamp']);
 
@@ -20,7 +21,7 @@ $name=time().rand(1000,9999);
 
 if (!empty($_FILES) && $_POST['token'] == $verifyToken) {
 	$tempFile = $_FILES['Filedata']['tmp_name'];
-	$targetPath = $_SERVER['DOCUMENT_ROOT'] . $targetFolder;
+	$targetPath = $targetFolder;
 	$fileParts = pathinfo($_FILES['Filedata']['name']);
 	$name=$name.'.'.$fileParts['extension'];
 	$targetFile = rtrim($targetPath,'/') . '/' . $name;

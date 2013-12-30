@@ -36,6 +36,10 @@
 								uploader      : '/hdd/uploadify/uploadify.php',
 								width         : 140,
 								buttonText    : '选择图片',
+								buttonClass   : 'uploadBtn',
+								fileSizeLimit : '512KB',
+								fileTypeDesc  : '图片',
+								fileTypeExts  : '*.jpg; *.png; *.jpeg',
 								onUploadStart : function() {
 									var load=layer.load(0);
 								},
@@ -65,8 +69,31 @@
 			</li>
 			<a class="centerlist" href="#"><li>个人信息<div class="extSt"></div></li></a>
 			<a class="centerlist" href="#"><li>消息中心<div class="extSt"></div></li></a>
-			<a class="centerlist" href="#"><li>退出登录<div class="extSt"></div></li></a>
+			<a rel="logout" class="centerlist" href="#"><li>退出登录<div class="extSt"></div></li></a>
 		</ul>
 		</br>
 	</div>
 </div>
+
+
+<script>
+	$("#sendmail").click(function(){
+		sendmail();
+	});
+	$("#bindaccount").click(function(){
+		bindaccount();
+	});
+	$("#logout").click(function(){
+		logout();
+	});
+	$(".optionsBtn").click(function(){
+		var rel=$(this).attr('rel');
+		switcher(rel);
+	});
+	$('.centerlist').click(function(){
+		showmenu($(this).attr('rel'));
+	});
+	$('[rel=logout]').click(function(){
+		logout();
+	});
+</script>

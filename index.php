@@ -16,6 +16,7 @@ $row=mysql_fetch_array($result);
 	<link rel="stylesheet" href="css/index.css">
 	<link rel="stylesheet" href="js/iealert/style.css">
 	<link rel="stylesheet" href="css/jquery.ui.all.css" />
+	<link rel="stylesheet" href="css/uploadify.css" />
 	
 	<script src="js/uaredirect.js"></script>
 <?php
@@ -33,7 +34,7 @@ if(!$_GET['force'])
 	<script src="js/html5placeholder.jquery.js"></script>
 	<script src="js/layer.min.js"></script>
 	<script src="js/iealert.min.js"></script>
-	<script src="js/jquery.uploadify.min.js" type="text/javascript"></script>
+	<script src="js/jquery.uploadify.js" type="text/javascript"></script>
 
 
 <?php
@@ -94,6 +95,18 @@ if(strpos($_SERVER['HTTP_REFERER'],'www.benbentime.com'))
 				</div>
 			</div>
 		</div>
+		<script>
+			$('#logPassword').keydown(function(e){
+				if(e.keyCode == 13){
+					login();
+				}
+			});
+			$('#regEmail').keydown(function(e){
+				if(e.keyCode == 13){
+					login();
+				}
+			});
+		</script>
 	</div>
 	<script>$('input').placeholder();</script>
 	<div class="menu">
@@ -102,6 +115,7 @@ if(strpos($_SERVER['HTTP_REFERER'],'www.benbentime.com'))
 			<li><a class="list" rel="teacher" href="#" onclick="teaUpdate();">老师去向</a></li>
 			<li><a class="list" rel="order" href="#" onclick="classUpdate();">办公室网上预定</a></li>
 			<li><a class="list" rel="message" href="#" onclick="message();">留言墙</a></li>
+			<li><a class="list" rel="code" href="#" onclick="code();">课程设计范例</a></li>
 			<li><a class="list" rel="extend" href="#" onclick="extend();">拓展服务</a></li>
 		</ul>
 	</div>

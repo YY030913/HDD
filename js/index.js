@@ -17,6 +17,13 @@ function callBack(){
 	$('.footer').css("line-height", footerHeight+'px');
 	$('.footer').css("font-size", footerHeight*0.45+'px');
 	$('.version').css("font-size", navHeight*0.12+'px');
+	if(document.body.offsetWidth < 1280){
+		$('.content').css("right", (navWidth-940)/2+'px');
+		$('.footer').css("right", (navWidth-940)/2+'px');
+	}else{
+		$('.content').css("right", (navWidth*0.96-1180)/2+'px');
+		$('.footer').css("right", (navWidth*0.96-1180)/2+'px');
+	}
 }
 
 function dutyUpdate(){
@@ -63,67 +70,45 @@ function teaUpdate(){
 }
 
 function classUpdate(){
-	var now = new Date();
-	var weekShader = now.getDay();
-	if(weekShader == 0){
-		weekShader = 7;
-	}
 	var load=layer.load(0);
-	var table='<p rel="info" style="text-align:center;">P.S. 把鼠标放在红色标记上查看详细信息，预定不可取消</p><p style="text-align:center;"><img src="./images/1.png" width="5%"></img><span>书屋已预订</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="./images/2.png" width="5%"></img><span>会议室已预订</span></p><table><tr height="40"><td width="80" align="center">&nbsp;</td><td width="80" align="center">星期一</td><td width="80" align="center">星期二</td><td width="80" align="center">星期三</td><td width="80" align="center">星期四</td><td width="80" align="center">星期五</td><td width="80" align="center">星期六</td><td width="80" align="center">星期日</td></tr>';
-	var time=new Array('','1-2节','3-4节','午休','5-6节','7-8节','9-10节','IN');
-	for(var i=1;i<=7;i++){
-		table += '<tr height="40">';
-		for(var j=0;j<=7;j++){
-			if(j==0){
-				table += '<td align="center">'+time[i]+'</td>';
-			}else{
-				if(j<weekShader){
-					table += '<td class="sign" id="'+j+i+'" align="center"><div id="1" class="half shader">&nbsp;<span id="1" class="tag"></span></div><div id="2" class="halfright shader">&nbsp;<span id="2" class="tag"></span><div></td>';
-				}else{
-					table += '<td class="sign" id="'+j+i+'" align="center"><div id="1" class="half">&nbsp;<span id="1" class="tag"></span></div><div id="2" class="halfright">&nbsp;<span id="2" class="tag"></span><div></td>';
+	$('.content').load('./ajax/classroom.html',function(){
+		$.ajax({
+			url: './php/api.php',
+			data: '&type=classroom',
+			dataType: 'json',
+			success: function(data){
+				layer.close(load);
+				if(data.content){
+					$.each(data.content,function(i,item){
+						$('td[id='+item.week+item.time+']').find('div[id='+item.room+']').addClass('red');
+						$('td[id='+item.week+item.time+']').find('span[id='+item.room+']').append('<p>'+item.name+' '+item.class1+'</p><p>'+item.content+'</p>');
+					});
 				}
-			}
-		}
-		table += '</tr>';
-	}
-	table += '</table>';
-	$.ajax({
-		url: './php/api.php',
-		data: '&type=classroom',
-		dataType: 'json',
-		success: function(data){
-			layer.close(load);
-			$('.content').html(table);
-			if(data.content){
-				$.each(data.content,function(i,item){
-					$('td[id='+item.week+item.time+']').find('div[id='+item.room+']').addClass('red');
-					$('td[id='+item.week+item.time+']').find('span[id='+item.room+']').append('<p>'+item.name+' '+item.class1+'</p><p>'+item.content+'</p>');
+				$(".red").mousemove(function(e){
+					var height = $(window).height();
+					$(this).find('.tag').css('display','block');
+					$(this).find('.tag').css('left', e.pageX);
+					$(this).find('.tag').css('bottom', height - e.pageY);
 				});
+				$(".red").mouseleave(function(e){
+					$(this).find('.tag').css('display','none');
+				});
+				$("[class=half],[class=halfright]").mouseover(function(){
+					$(this).addClass('over');
+				});
+				$("[class=half],[class=halfright]").mouseleave(function(){
+					$(this).removeClass('over');
+				});
+				$("[class=half],[class=halfright]").click(function(){
+					var id = $(this).parent('.sign').attr('id')+$(this).attr('id');
+					order(id);
+				});
+			},
+			error: function(){
+				layer.close(load);
+				layer.alert(warning, 8);
 			}
-			$(".red").mousemove(function(e){
-				var height = $(window).height();
-				$(this).find('.tag').css('display','block');
-				$(this).find('.tag').css('left', e.pageX);
-				$(this).find('.tag').css('bottom', height - e.pageY);
-			});
-			$(".red").mouseleave(function(e){
-				$(this).find('.tag').css('display','none');
-			});
-			$("[class=half],[class=halfright]").mouseover(function(){
-				$(this).addClass('over');
-			});
-			$("[class=half],[class=halfright]").mouseleave(function(){
-				$(this).removeClass('over');
-			});
-			$("[class=half],[class=halfright]").click(function(){
-				var id = $(this).parent('.sign').attr('id')+$(this).attr('id');
-				order(id);
-			});
-		},
-		error: function(){
-			layer.close(load);
-			layer.alert(warning, 8);
-		}
+		});
 	});
 }
 
@@ -271,7 +256,20 @@ function submitUpdate(){
 }
 
 function extend(){
-	$('.content').html('<h1><a href="http://hs.itjesse.cn/files/hbut-score-client-latest.zip">湖工大查分客户端</a></h1><h2><a href="http://blog.sina.com.cn/u/2450629767">学工助理博客</a></h2><h2><a href="http://www.benbentime.com">计算机学院工作网</a></h2><h2><a href="http://blog.sina.com.cn/hbut2013">13级年级博客</a></h2><h2><a href="http://blog.sina.com.cn/u/2449956125">12级年级博客</a></h2><h2><a href="http://blog.sina.com.cn/u/2449939115">11级年级博客</a></h2><h2><a href="http://blog.sina.com.cn/u/2450656273">10级年级博客</a></h2>');
+	var load=layer.load(0);
+	$('.content').load('./ajax/extend.html',function(){
+		layer.close(load);
+	});
+}
+
+function code(){
+	var load=layer.load(0);
+	$('.content').load('./ajax/code.html',function(){
+		$('#c').find('tbody').append('<tr><td>无</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>');
+		$('#dataStructure').find('tbody').append('<tr><td>无</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>');
+		$('#java').find('tbody').append('<tr><td>无</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>');
+		layer.close(load);
+	});
 }
 
 function center(){
@@ -420,7 +418,7 @@ function testScreen(){
 	if(screen.width < 1024){
 		layer.alert('您的屏幕分辨率太小，网页可能无法正常显示。</br>（推荐分辨率1280x720以上）', 8);
 	}else{
-		if(document.body.offsetWidth < 1200){
+		if(document.body.offsetWidth < 1280){
 			slidemenu();
 		}else{
 			fixedmenu();
@@ -442,7 +440,7 @@ function slidemenu(){
 }
 
 function fixedmenu(){
-	$('.menu').animate({left:"4%"},400);
+	$('.menu').stop(true,false).animate({left:"4%"},400);
 	$('.menu').find('ul').unbind();
 }
 

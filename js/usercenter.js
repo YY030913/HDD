@@ -73,14 +73,20 @@ function register(){
 	var password_repeat = $('#regPassword_repeat').val();
 	var email = $('#regEmail').val();
 	if(!username){
+		checkinput('regUsername');
 		layer.alert('请输入用户名', 8);
 	}else if(!password){
+		checkinput('regPassword');
 		layer.alert('请输入密码', 8);
 	}else if(!password_repeat){
+		checkinput('regPassword_repeat');
 		layer.alert('请确认密码', 8);
 	}else if(!email){
+		checkinput('regEmail');
 		layer.alert('请输入邮箱', 8);
 	}else if(password != password_repeat){
+		checkinput('regPassword');
+		checkinput('regPassword_repeat');
 		layer.alert('两次密码输入不一致', 8);
 	}else{
 		var load=layer.load(0);
@@ -119,8 +125,10 @@ function login(){
 	var username = $('#logUsername').val();
 	var password = $('#logPassword').val();
 	if(!username){
+		checkinput('logUsername');
 		layer.alert('请输入用户名', 8);
 	}else if(!password){
+		checkinput('logPassword');
 		layer.alert('请输入密码', 8);
 	}else{
 		var load=layer.load(0);
@@ -157,14 +165,14 @@ function logout(){
 	$('#logout').attr('disabled',true);
 	$('#logout').addClass('disabled');
 	var load=layer.load(0);
-	setTimeout(function(){
+	//setTimeout(function(){
 		$.ajax({
 			url: './php/logout.php',
 			success: function(returnKey){
 				window.location.reload(); 
 			}
 		});
-	}, 1000);
+	//}, 1000);
 	$('#logout').attr('disabled',false);
 	$('#logout').removeClass('disabled');
 }
@@ -198,22 +206,6 @@ function loadCenter(){
 					$('#sign').html(sign);
 					$('#centerContent').load('./ajax/uc_success.html',function(){
 						updateAvatar();
-						$("#sendmail").click(function(){
-							sendmail();
-						});
-						$("#bindaccount").click(function(){
-							bindaccount();
-						});
-						$("#logout").click(function(){
-							logout();
-						});
-						$(".optionsBtn").click(function(){
-							var rel=$(this).attr('rel');
-							switcher(rel);
-						});
-						$('.centerlist').click(function(){
-							showmenu($(this).attr('rel'));
-						});
 						if(data.content.emailverify != '0'){
 							$('#sendmail').attr('disabled','disabled');
 							$('#sendmail').addClass('disabled');
@@ -327,6 +319,13 @@ function bindsubmit(index){
 			}
 		});	
 	}
+}
+
+function checkinput(id){
+	$('[id='+id+']').addClass('wrong');
+	$('[id='+id+']').change(function(){
+		$('[id='+id+']').removeClass('wrong');
+	});
 }
 
 function checkbind(type){

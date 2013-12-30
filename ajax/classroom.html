@@ -1,0 +1,43 @@
+<p rel="info" style="text-align:center;">P.S. 把鼠标放在红色标记上查看详细信息，预定不可取消</p>
+<p style="text-align:center;">
+	<img src="./images/1.png" width="5%"></img><span>书屋已预订</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<img src="./images/2.png" width="5%"></img><span>会议室已预订</span>
+</p>
+<table class="classTable">
+	<tr height="40">
+		<td width="80" align="center">&nbsp;</td>
+		<td width="80" align="center">星期一</td>
+		<td width="80" align="center">星期二</td>
+		<td width="80" align="center">星期三</td>
+		<td width="80" align="center">星期四</td>
+		<td width="80" align="center">星期五</td>
+		<td width="80" align="center">星期六</td>
+		<td width="80" align="center">星期日</td>
+	</tr>
+</table>
+
+<script>
+	var now = new Date();
+	var weekShader = now.getDay();
+	if(weekShader == 0){
+		weekShader = 7;
+	}
+	var table=$('tbody');
+	var time=new Array('','1-2节','3-4节','午休','5-6节','7-8节','9-10节','IN');
+	for(var i=1;i<=7;i++){
+		var row = '<tr height="40">';
+		for(var j=0;j<=7;j++){
+			if(j==0){
+				row += '<td align="center">'+time[i]+'</td>';
+			}else{
+				if(j<weekShader){
+					row += '<td class="sign" id="'+j+i+'" align="center"><div id="1" class="half shader">&nbsp;<span id="1" class="tag"></span></div><div id="2" class="halfright shader">&nbsp;<span id="2" class="tag"></span><div></td>';
+				}else{
+					row += '<td class="sign" id="'+j+i+'" align="center"><div id="1" class="half">&nbsp;<span id="1" class="tag"></span></div><div id="2" class="halfright">&nbsp;<span id="2" class="tag"></span><div></td>';
+				}
+			}
+		}
+		row += '</tr>';
+		table.append(row);
+	}
+</script>
